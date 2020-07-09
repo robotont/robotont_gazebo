@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="world" default="worlds/empty.world"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world)"/>
+    </include>
+    <!-- Convert an xacro and put on parameter server -->
+    <param name="/robotont/robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/robotont_gazebo.urdf.xacro" />
+    <!-- State publishers -->
+    <node ns="/robotont" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node ns="/robotont" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <!-- Gazebo driver -->
+    <node ns="/robotont" pkg="robotont_driver" name="gazebo_driver_node" type="gazebo_driver_node" output="screen" />
+    <!-- Spawn a robot into Gazebo -->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param /robotont/robot_description -y -3 -Y -4.71 -urdf -model robotont" />
+    <!-- Teleop keyboard -->
+    <node ns="robotont" pkg="teleop_twist_keyboard" name="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen">
+        <param name='~speed' value="1.2" />
+        <param name='~turn' value="35" />
+    </node>
+    <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
+        <param name="scan_height" value="10"/>
+        <param name="output_frame_id" value="camera_depth_frame"/>
+        <param name="range_min" value="0.45"/>
+        <remap from="image" to="/camera/depth/image_raw"/>
+        <remap from="scan" to="/scan"/>
+    </node>
+    <node pkg="robotont_laserscan_to_distance" name="laserscan_to_distance" type="laserscan_to_distance.py" output="screen" />
+</launch>
