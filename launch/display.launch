@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <launch>
     <arg name="model" />
-	<param name="robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/robotont_base_gazebo.urdf.xacro"/>
+	<param name="robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/robotont_gazebo.urdf.xacro"/>
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find robotont_description)/config/robotont_description.rviz"/>
