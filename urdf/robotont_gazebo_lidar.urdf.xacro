@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="robotont">
     <xacro:include filename="$(find robotont_description)/urdf/robotont_base.urdf.xacro"/>
+	<xacro:include filename="$(find robotont_gazebo)/urdf/_d435.urdf.xacro" />
 	<xacro:include filename="$(find robotont_gazebo)/urdf/robotont_gazebo_common_lidar.urdf.xacro" />
+    <xacro:sensor_d435 parent="${prefix}base_link">
+        <origin xyz="-0.12 0 0.21" rpy="0 0 0"/>
+    </xacro:sensor_d435>
     <!-- Computer -->
     <link name="${prefix}computer_link">
         <visual>

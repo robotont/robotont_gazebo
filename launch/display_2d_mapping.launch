@@ -1,7 +1,4 @@
 <?xml version="1.0" ?>
 <launch>
-    <arg name="model" />
-    <arg name="gui" default="True" />
-    <param name="use_gui" value="$(arg gui)" />
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robotont_gazebo)/config/robotont_mapping.rviz" output="screen" />
 </launch>
