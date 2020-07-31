@@ -24,7 +24,7 @@
     <param name="odom/frame" value="odom"/>
     <node name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
-          -configuration_directory $(find robotont_demos)/config
+          -configuration_directory $(find robotont_gazebo)/config
           -configuration_basename robotont_cartographer_localization_2d.lua"
       output="screen">
 		<remap from="odom" to="$(arg robotont_ns)/odom"/>
