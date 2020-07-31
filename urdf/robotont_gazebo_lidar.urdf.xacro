@@ -32,7 +32,8 @@
     </joint>
 
 
-  <!-- Hokuyo Laser -->
+
+  <!-- Hokuyo Laser
     <joint name="hokuyo_joint" type="fixed">
         <axis xyz="0 1 0" />
         <origin xyz="0 0 0.05" rpy="0 0 0"/>
@@ -51,7 +52,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://robotont_description/meshes/hokuyo.dae"/>
+                <mesh filename="package://robotont_gazebo/meshes/hokuyo.dae"/>
             </geometry>
         </visual>
 
@@ -61,4 +62,5 @@
             <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
         </inertial>
     </link>
+     -->
 </robot>

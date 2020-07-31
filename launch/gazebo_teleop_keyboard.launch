@@ -12,7 +12,7 @@
     <!-- Gazebo driver -->
     <node ns="/robotont" pkg="robotont_driver" name="gazebo_driver_node" type="gazebo_driver_node" output="screen" />
     <!-- Spawn a robot into Gazebo -->
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param /robotont/robot_description -urdf -model robotont" />
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param /robotont/robot_description -urdf -x -5 -model robotont" />
     <!-- Teleop keyboard -->
     <node ns="robotont" pkg="teleop_twist_keyboard" name="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen">
         <param name='~speed' value="1.2" />
@@ -26,7 +26,6 @@
         <remap from="scan" to="scan"/>
         <param name="target_frame" value="camera_depth_frame"/>
     </node> -->
-
         <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
       <param name="output_frame_id" value="camera_depth_frame"/>
       <remap from="image" to="/camera/depth/image_raw"/>
