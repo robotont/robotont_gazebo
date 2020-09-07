@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <launch>
     <arg name="world" default="worlds/empty.world"/>
+    <arg name="x_pos" default="3"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(arg world)"/>
     </include>
@@ -10,14 +11,11 @@
     <node ns="/robotont" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
     <node ns="/robotont" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
     <!-- Spawn a robot into Gazebo -->
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param /robotont/robot_description -urdf -model robotont" />
+   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param /robotont/robot_description -urdf -x -$(arg x_pos) -model robotont" />
     <!-- Laserscan -->
     <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
-        <param name="scan_height" value="10"/>
-        <param name="output_frame_id" value="camera_depth_frame"/>
-        <param name="range_min" value="0.45"/>
-        <remap from="image" to="/camera/depth/image_raw"/>
-        <remap from="scan" to="/scan"/>
+      <remap from="image" to="/camera/depth/image_raw"/>
+      <rosparam command="load" file="$(find robotont_gazebo)/config/laser_params.yaml" />
     </node>
     <node pkg="robotont_laserscan_to_distance" name="laserscan_to_distance" type="laserscan_to_distance.py" output="screen" />
 </launch>   

@@ -18,4 +18,5 @@
         <param name='~speed' value="1.2" />
         <param name='~turn' value="35" />
     </node>
+    <node pkg="robotont_laserscan_to_distance" name="laserscan_to_distance" type="laserscan_to_distance.py" output="screen" />
 </launch>

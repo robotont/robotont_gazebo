@@ -6,7 +6,6 @@
     <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" >
         <param name="odom_frame" value="odom" />
         <param name="base_frame" value="base_footprint" />
-
     </node>
        <!-- Launch navigation stack -->
     <arg name="no_static_map" default="false"/>

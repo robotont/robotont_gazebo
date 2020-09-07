@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<launch>
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find robotont_gazebo)/config/robotont_mapping.rviz" output="screen" />
+</launch>
