@@ -9,7 +9,7 @@ material RoboTont/WhiteBricks
         // Relative to the location of the material script
         texture uv_layout_materials.png 
         // Repeat the texture over the surface (4 per face)
-        scale 0.5 0.5
+        scale 1 1
       }
     }
   }

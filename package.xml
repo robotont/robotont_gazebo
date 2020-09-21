@@ -19,12 +19,14 @@
     <build_depend>std_msgs</build_depend>
     <build_depend>joy</build_depend>
     <build_depend>nav_msgs</build_depend>
+    <build_depend>tf</build_depend>
     <exec_depend>roscpp</exec_depend>
     <exec_depend>rospy</exec_depend>
     <exec_depend>std_msgs</exec_depend>
     <exec_depend>gazebo_ros</exec_depend>
     <exec_depend>joy</exec_depend>
     <exec_depend>nav_msgs</exec_depend>
+    <exec_depend>tf</exec_depend>
 
     <export>
         <gazebo_ros gazebo_media_path="${prefix}"/>

@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   joy
   nav_msgs
   cmake_modules
+  tf
 )
 
 catkin_package(
@@ -16,6 +17,7 @@ catkin_package(
     std_msgs
     joy
     nav_msgs
+    tf
 )
 
 include_directories(
@@ -24,5 +26,9 @@ include_directories(
 )
 
 add_executable(gazebo_robotont_teleop_joy src/gazebo_robotont_teleop_joy.cpp) 
+add_executable(gazebo_driver_node src/gazebo_driver.cpp) 
+add_executable(gazebo_odom_node src/gazebo_odom.cpp) 
 
 target_link_libraries(gazebo_robotont_teleop_joy ${catkin_LIBRARIES})
+target_link_libraries(gazebo_driver_node ${catkin_LIBRARIES})
+target_link_libraries(gazebo_odom_node ${catkin_LIBRARIES})

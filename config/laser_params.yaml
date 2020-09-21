@@ -1,9 +1,0 @@
-{
-    "range_min": 0.0,
-    "range_max": 81.0,
-    "angle_min": -1.57079637051,
-    "angle_max": 1.57079637051,
-    "angle_increment": 0.00872664619235,
-    "time_increment": 7.40740724722e-05,
-    "scan_time": 0.01333333365629
-}

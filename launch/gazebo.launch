@@ -15,7 +15,7 @@
     <!-- Laserscan -->
     <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
       <remap from="image" to="/camera/depth/image_raw"/>
-      <rosparam command="load" file="$(find robotont_gazebo)/config/laser_params.yaml" />
     </node>
     <node pkg="robotont_laserscan_to_distance" name="laserscan_to_distance" type="laserscan_to_distance.py" output="screen" />
+    
 </launch>   
