@@ -25,10 +25,14 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(gazebo_robotont_teleop_joy src/gazebo_robotont_teleop_joy.cpp) 
 add_executable(gazebo_driver_node src/gazebo_driver.cpp) 
-add_executable(gazebo_odom_node src/gazebo_odom.cpp) 
 
-target_link_libraries(gazebo_robotont_teleop_joy ${catkin_LIBRARIES})
 target_link_libraries(gazebo_driver_node ${catkin_LIBRARIES})
-target_link_libraries(gazebo_odom_node ${catkin_LIBRARIES})
+
+install(TARGETS gazebo_driver_node
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  )
+
+install(DIRECTORY config launch media meshes src urdf worlds DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
