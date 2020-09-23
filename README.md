@@ -31,11 +31,3 @@ To simply run the maps without using the arguments:
 *   ```bash
     roslaunch robotont_gazebo gazebo_world_bangbang.launch
     ```
-
-## 2D mapping
-
-To map the world and visualize it on RViz: 
-
-```bash
-roslaunch robotont_gazebo 2d_nav_carto_gazebo.launch
-```

@@ -22,10 +22,6 @@
     <build_depend>tf</build_depend>
 
     <exec_depend>robotont_description</exec_depend>
-    <exec_depend>robotont_navigation</exec_depend>
-    <exec_depend>robotont_laserscan_to_distance</exec_depend>
-    <exec_depend>cartographer_ros</exec_depend>
-    <exec_depend>move_base</exec_depend>
     <exec_depend>roscpp</exec_depend>
     <exec_depend>rospy</exec_depend>
     <exec_depend>std_msgs</exec_depend>

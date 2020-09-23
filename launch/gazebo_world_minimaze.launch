@@ -6,9 +6,4 @@
         <arg name="world" value="$(arg world)"/>
         <arg name="x_pos" value="$(arg x_pos)"/>
     </include>
-    <!-- Teleop keyboard -->
-    <node ns="robotont" pkg="teleop_twist_keyboard" name="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen">
-        <param name='~speed' value="1.0" />
-        <param name='~turn' value="10" />
-    </node>
 </launch>

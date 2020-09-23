@@ -1,6 +1,0 @@
-<?xml version="1.0" ?>
-<launch>
-<include file="$(find robotont_navigation)/launch/navstack.launch"/>
-<include file="$(find robotont_gazebo)/launch/gazebo_mapping.launch"/>
-<include file="$(find robotont_gazebo)/launch/display_mapping.launch"/>
-</launch>

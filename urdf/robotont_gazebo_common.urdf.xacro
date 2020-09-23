@@ -25,7 +25,7 @@
         </gazebo>
         <!-- Give materials to links -->
         <gazebo reference="${prefix}base_link">
-            <material>Robotont/BlueishTransparent</material>
+            <material>Gazebo/GreyTransparent </material>
         </gazebo>
         <gazebo reference="${prefix}camera_link">
             <material>Gazebo/Grey</material>

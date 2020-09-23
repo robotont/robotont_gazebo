@@ -35,4 +35,4 @@ install(TARGETS gazebo_driver_node
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
   )
 
-install(DIRECTORY config launch media meshes src urdf worlds DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(DIRECTORY launch media meshes src urdf worlds DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
