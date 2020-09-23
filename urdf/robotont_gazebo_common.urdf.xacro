@@ -56,7 +56,7 @@
                     <alwaysOn>true</alwaysOn>
                     <updateRate>0.0</updateRate>
                     <imageTopicName>color/image_raw</imageTopicName>
-                    <depthImageTopicName>depth/image_raw</depthImageTopicName>
+                    <depthImageTopicName>depth/image_rect_raw</depthImageTopicName>
                     <pointCloudTopicName>depth/points</pointCloudTopicName>
                     <cameraInfoTopicName>color/camera_info</cameraInfoTopicName>
                     <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>

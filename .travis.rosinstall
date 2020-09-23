@@ -1,9 +1,0 @@
-- git:
-    local-name: robotont/robotont_navigation
-    uri: https://github.com/robotont/robotont_navigation.git
-- git:
-    local-name: robotont/robotont_laserscan_to_distance
-    uri: https://github.com/robotont/robotont_laserscan_to_distance.git
-- git:
-    local-name: robotont/robotont_description
-    uri: https://github.com/robotont/robotont_description.git
