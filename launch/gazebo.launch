@@ -3,7 +3,6 @@
     <arg name="world" default="worlds/empty.world" />
     <arg name="x_pos" default="0"/>
     <arg name="model" default="robotont_gazebo_nuc"/>
-    <arg name="driver_hack" default="true"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(arg world)"/>
     </include>
@@ -11,10 +10,6 @@
     <node name="relay" type="relay" pkg="topic_tools" args="/camera/depth/image_rect_raw /camera/aligned_depth_to_color/image_raw" />
     <!-- Convert an xacro and put on parameter server -->
     <param name="/robotont/robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/$(arg model).urdf.xacro"/>
-    <!-- gazebo_driver hack -->
-    <group if="$(arg driver_hack)">
-        <node ns="/robotont" pkg="robotont_gazebo" name="gazebo_driver_node" type="gazebo_driver_node" output="screen" />
-    </group>
     <!-- State publishers -->
     <node ns="/robotont" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
     <node ns="/robotont" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
