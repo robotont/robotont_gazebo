@@ -7,7 +7,9 @@
         <arg name="world_name" value="$(arg world)"/>
     </include>
     <!-- topic for 3d_mapping -->
-    <node name="relay" type="relay" pkg="topic_tools" args="/camera/depth/image_rect_raw /camera/aligned_depth_to_color/image_raw" />
+    <group unless="$(eval arg('model') == 'robotont_gazebo_lidar')">
+        <node name="relay" type="relay" pkg="topic_tools" args="/camera/depth/image_rect_raw /camera/aligned_depth_to_color/image_raw" />
+    </group>
     <!-- Convert an xacro and put on parameter server -->
     <param name="/robotont/robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/$(arg model).urdf.xacro"/>
     <!-- State publishers -->

@@ -20,7 +20,7 @@ The launch file has four arguments:
 
 * model - chooses between a model with NUC and realsense and a model without them
     * default: robotont_gazebo_nuc 
-    * options: robotont_gazebo_nuc, robotont_gazebo_basic
+    * options: robotont_gazebo_nuc, robotont_gazebo_basic, robotont_gazebo_lidar
 * world - chooses which world to use
     * default: empty.world
     * options: empty.world, minimaze.world, bangbang.world, between.world, colors.world
