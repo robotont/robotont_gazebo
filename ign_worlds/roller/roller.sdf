@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <model name="roller">
+    
+        <sdf:if value="${z_distance_reflect==-1}">
+            <sdf:property name="name" value="front_${no_of_roller}" />
+            <sdf:property name="offset" value="0" />
+        </sdf:if>
+        <sdf:unless value="${z_distance_reflect==-1}">
+            <sdf:property name="name" value="back_${no_of_roller}" />
+            <sdf:property name="offset" value="${pi}" />
+        </sdf:unless>
+        <link name="roller_rim_link">
+            <visual name='visual'>
+                <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri> file://src/robotont_description/meshes/roller.stl
+                        </uri>
+                    </mesh>
+                </geometry>
+                <material>
+                    <ambient>0.1 1.0 0.3 1</ambient>
+                    <diffuse>0.1 1.0 0.3 1</diffuse>
+                    <specular>0.1 1.0 0.3 1</specular>
+                </material>
+            </visual>
+            
+        </link>        
+    </model>
+</sdf>
+
+
+
+
+
+
+
+
+
+
+
+

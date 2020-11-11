@@ -1,0 +1,223 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+    <model name="rim">
+        <link name="rim_link">
+            <visual name='visual'>
+                <geometry>
+                    <mesh>
+                    <uri> file://src/robotont_description/meshes/rim.stl
+                    </uri>
+                </mesh>
+                </geometry>
+                <material>
+                    <ambient>0.0 0.3 0.0 1</ambient>
+                    <diffuse>0.0 0.3 0.0 1</diffuse>
+                    <specular>0.0 0.3 0.0 1</specular>                    
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <cylinder>
+                        <radius>0.035</radius>
+                        <length>0.03</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <inertial>
+                <origin xyz="0 0 0"/>
+                <mass>0.00835758</mass>
+                <inertia>
+                    <ixx>6.63684e-07</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>6.63684e-07</iyy>
+                    <iyz>0</iyz>
+                    <izz>9.40333e-07</izz>                        
+                </inertia>                   
+            </inertial>
+        </link>
+        
+        <include>
+            <name>0f</name>
+            <pose>0	0.027 0.008	0 0	0</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_0f_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>0f::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>1f</name>
+            <pose>0.021109450026637 0.016834224650186 0.008 0 0 -0.897597901025655</pose>  
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_1f_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>1f::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>2f</name>
+            <pose>0.026323053628909	-0.00600806521682	0.008 0 0 -1.79519580205131</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_2f_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>2f::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>3f</name>
+            <pose>0.011714860956174	-0.024326159433365	0.008	0	0	-2.69279370307697</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_3f_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>3f::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>4f</name>
+            <pose>-0.011714860956174	-0.024326159433365	0.008	0	0	-3.59039160410262</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_4f_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>4f::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>5f</name>
+            <pose>-0.026323053628909	-0.006008065216821	0.008	0	0	-4.48798950512828</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_5f_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>5f::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>6f</name>
+            <pose>-0.021109450026637	0.016834224650186	0.008	0	0	-5.38558740615393</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_6f_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>6f::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>0b</name>
+            <pose>0	-0.027 -0.008	0 0	0</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_0b_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>0b::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>1b</name>
+            <pose>0.021109450026637 -0.016834224650186 -0.008 0 0 0.897597901025655</pose>  
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_1b_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>1b::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>2b</name>
+            <pose>0.026323053628909	0.00600806521682	-0.008 0 0 1.79519580205131</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_2b_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>2b::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>3b</name>
+            <pose>0.011714860956174	0.024326159433365	-0.008	0	0	2.69279370307697</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_3b_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>3b::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>4b</name>
+            <pose>-0.011714860956174	0.024326159433365	-0.008	0	0	3.59039160410262</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_4b_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>4b::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>5b</name>
+            <pose>-0.026323053628909	0.006008065216821	-0.008	0	0	4.48798950512828</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_5b_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>5b::roller_rim_link</child>                                             
+        </joint>
+
+        <include>
+            <name>6b</name>
+            <pose>-0.021109450026637	-0.016834224650186	-0.008	0	0	5.38558740615393</pose>                
+            <uri>
+            model://roller
+            </uri>
+        </include>
+
+        <joint name="roller_6b_rim_joint" type="fixed">
+            <parent>rim_link</parent>
+            <child>6b::roller_rim_link</child>                                             
+        </joint>
+
+    </model>
+</sdf>
