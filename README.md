@@ -82,33 +82,33 @@ ign topic -e -t /topic
 
 ## Run robotont model
 ``` bash
-cd ~/ign_gazebo_ros_ws/src/sdf
-ign gazebo robotont.sdf
+cd ~/robotont_ws
+ign gazebo ./src/robototnt_gazebo/ign_worlds/robotont.sdf
 ```
 
 ## Run robotont model with camera sensor
 ``` bash
-cd ~/ign_gazebo_ros_ws/src/sdf
-ign gazebo roboto_with_depth_camera.sdf
+cd ~/robotont_ws
+ign gazebo ./src/robototnt_gazebo/ign_worlds/roboto_with_depth_camera.sdf
 ```
 
 ## Connect with ROS
 In order to connect ignition gazebo with ros it is neccesary to have ros_ign_bridge package. 
 
-For some reason when I installed it with the binary installation procedure, the node runs but it does not publish any message on the topics. 
+* For some reason when I installed it with the binary installation procedure, the node runs but it does not publish any message on the topics. 
 ``` bash 
 sudo apt install ros-noetic-ros-ign
 ```
 
-Using the source intallation procedure, it works fine.
+* Using the source intallation procedure, it works fine.
 
 ``` bash 
 sudo apt install ros-melodic-rqt-image-view libignition-common3-dev libignition-transport8-dev libignition-msgs5-dev
 export IGNITION_VERSION=citadel
-mkdir -p ~/ign_gazebo_ros_ws/src
-cd ~/ign_gazebo_ros_ws/src
+mkdir -p ~/robotont_ws/src
+cd ~/robotont_ws/src
 git clone https://github.com/osrf/ros_ign.git -b melodic
-cd ~/ign_gazebo_ros_ws
+cd ~/robotont_ws
 rosdep install --from-paths src -i -y --rosdistro melodic \
   --skip-keys=ignition-gazebo2 \
   --skip-keys=ignition-gazebo3 \
@@ -125,14 +125,29 @@ rosdep install --from-paths src -i -y --rosdistro melodic \
 source /opt/ros/melodic/setup.bash
 
 catkin build
-
+cd ~/robotont_ws
 source devel/setup/bash
 
 ```
 
-Example:
+export SDF_PATH="~/robotont_ws/src/robotont_gazebo/ign_worlds"
+export IGN_FILE_PATH="~/robotont_ws/src/robotont_gazebo/ign_worlds"
+
+
+### Move the robot:
+To command the robot directly using the ignition topics:
+ign topic -t "/model/robotont/cmd_vel" -m ignition.msgs.Twist -p "linear: {x: 0.5}, angular: {z: 0.0}"
+
+
+To connect with ros:
+1. roscore
+2. rosrun ros_ign_bridge parameter_bridge /model/robotont/cmd_vel@geometry_msgs/Twist@ignition.msgs.Twist
+3. rostopic pub /model/robotont/cmd_vel geometry_msgs/Twist ...
+
+### Camera:
 ignition gazebo side: 
-1. ign gazebo ./src/robototnt_gazebo/roboto_with_depth_camera.sdf
+cd catking_ws that contains the robotont packages
+1. ign gazebo ./src/robototnt_gazebo/ign_worlds/robotont_with_depth_camera.sdf
 2. ign topic -l 
 /camera_info
 /depth_camera 
@@ -147,17 +162,8 @@ it should appear the /depth_camera topic
 Update the window with the topic /depth_camera
 
 
-To command the robot directly using the ignition topics:
-ign topic -t "/model/robotont/cmd_vel" -m ignition.msgs.Twist -p "linear: {x: 0.5}, angular: {z: 0.0}"
-
-
-To connect with ros:
-1. roscore
-2. rosrun ros_ign_bridge parameter_bridge /model/robotont/cmd_vel@geometry_msgs/Twist@ignition.msgs.Twist
-3. rostopic pub /mol/robotont/cmd_vel geometry_msgs/Twist ...
-
 References:
-http://sdformat.org/spec
-http://sdformat.org/tutorials
-https://github.com/ignitionrobotics/ros_ign/tree/melodic/ros_ign_bridge#prerequisites
-https://ignitionrobotics.org/libs/gazebo
+* http://sdformat.org/spec
+* http://sdformat.org/tutorials
+* https://github.com/ignitionrobotics/ros_ign/tree/melodic/ros_ign_bridge#prerequisites
+* https://ignitionrobotics.org/libs/gazebo
