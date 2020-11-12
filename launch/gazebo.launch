@@ -13,8 +13,8 @@
     <!-- Convert an xacro and put on parameter server -->
     <param name="/robotont/robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/$(arg model).urdf.xacro"/>
     <!-- State publishers -->
-    <node ns="/robotont" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-    <node ns="/robotont" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <node ns="robotont" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node ns="robotont" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
     <!-- Spawn a robot into Gazebo -->
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param /robotont/robot_description -urdf -x -$(arg x_pos) -model robotont" />  
 </launch>   
