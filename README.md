@@ -78,12 +78,12 @@ ign topic -e -t /topic
 ## How to run some examples:
 * ign gazebo camera_sensor.sdf
 * ign gazebo shapes.sdf
-* ign gazebo diff_driver.sdf
+* ign gazebo diff_drive.sdf
 
-
-
+## In order to find the world and model: 
+``` bash
 export IGN_GAZEBO_RESOURCE_PATH=~/robotont_ws/src/robotont_gazebo/ign_worlds
-
+```
 
 ## Run robotont model
 ``` bash
@@ -100,12 +100,12 @@ ign gazebo roboto_with_depth_camera.sdf
 ## Connect with ROS
 In order to connect ignition gazebo with ros it is neccesary to have ros_ign_bridge package. 
 
-* For some reason when I installed it with the binary installation procedure, the node runs but it does not publish any message on the topics. 
+* The binary installation is only available for Blueprint. 
 ``` bash 
-sudo apt install ros-noetic-ros-ign
+sudo apt install ros-melodic-ros-ign
 ```
 
-* Using the source intallation procedure, it works fine.
+* Source intallation procedure, it works fine with citadel.
 
 ``` bash 
 sudo apt install ros-melodic-rqt-image-view libignition-common3-dev libignition-transport8-dev libignition-msgs5-dev
@@ -135,14 +135,11 @@ source devel/setup/bash
 
 ```
 
-export SDF_PATH="~/robotont_ws/src/robotont_gazebo/ign_worlds"
-export IGN_FILE_PATH="~/robotont_ws/src/robotont_gazebo/ign_worlds"
-
-
 ### Move the robot:
 To command the robot directly using the ignition topics:
+``` bash 
 ign topic -t "/model/robotont/cmd_vel" -m ignition.msgs.Twist -p "linear: {x: 0.5}, angular: {z: 0.0}"
-
+```
 
 To connect with ros:
 1. roscore
@@ -152,7 +149,7 @@ To connect with ros:
 ### Camera:
 ignition gazebo side: 
 cd catking_ws that contains the robotont packages
-1. ign gazebo ./src/robototnt_gazebo/ign_worlds/robotont_with_depth_camera.sdf
+1. ign gazebo robotont_with_depth_camera.sdf
 2. ign topic -l 
 /camera_info
 /depth_camera 
@@ -172,3 +169,10 @@ References:
 * http://sdformat.org/tutorials
 * https://github.com/ignitionrobotics/ros_ign/tree/melodic/ros_ign_bridge#prerequisites
 * https://ignitionrobotics.org/libs/gazebo
+
+
+Current Issues:
+Odometry ???   - /model/robotont/odometry@nav_msgs/Odometry@ignition.msgs.Odometry
+uri 
+spawn a model into the world 
+launch the models from ROS or from ign gazebo ?

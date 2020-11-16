@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<launch>
+<arg name="model" default="robotont_gazebo_nuc"/>
+
+<node name="spawn_sdf" pkg="ros_ign_gazebo" type="create" args="-world default -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont/robotont.sdf'"/>
+
+</launch>   

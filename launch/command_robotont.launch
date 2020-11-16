@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- <arg name="world" default="worlds/empty.world" />
+    <arg name="x_pos" default="0"/>
+    <arg name="model" default="robotont_gazebo_nuc"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world)"/>
+    </include> -->
+
+    <!-- <include file="$(find ros_ign_gazebo)/launch/ign_gazebo.launch">
+        <arg name="ign_args" value="-r robotont_with_depth_camera.sdf"/>
+    </include> -->
+
+  
+    <node name="bridge_cmd_vel" pkg="ros_ign_bridge" type="parameter_bridge" args="/model/robotont/cmd_vel@geometry_msgs/Twist@ignition.msgs.Twist /model/robotont/odometry@nav_msgs/Odometry@ignition.msgs.Odometry" />  
+    <node name="bridge_image_raw" pkg="ros_ign_bridge" type="parameter_bridge" args="/depth_camera@sensor_msgs/Image@ignition.msgs.Image" />  
+    <node name="bridge_pointcloud" pkg="ros_ign_bridge" type="parameter_bridge" args="/depth_camera/points@sensor_msgs/PointCloud2@ignition.msgs.PointCloudPacked" />  
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robotont_gazebo)/config/config.rviz"/>
+    <!-- frame_id: robotont/depth_camera/depth_camera1 -->
+
+</launch>   
