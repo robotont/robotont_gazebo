@@ -1,12 +1,11 @@
 <?xml version="1.0" ?>
 <sdf version="1.7">
     
-    <sdf:arg name="prefix" default="r"/>
-    <prefix>prefix</prefix>
+    <!-- <sdf:arg name="prefix" default=""/> -->
+    <!-- <prefix>prefix</prefix>
     <sdf:property name= "prefix" value="$(arg prefix)"/>
-    <!-- <sdf:include filename="$(find robotont_description)/urdf/rim.urdf.xacro"/> -->
     <sdf:property name="wheel_distance" value="0.146"/>
-    <sdf:property name="wheel_center_height" value="0.021"/>
+    <sdf:property name="wheel_center_height" value="0.021"/> -->
 
     <world name="Moving_robot">
         <physics name="1ms" type="ignored">
@@ -156,6 +155,7 @@
                     <geometry>
                         <mesh>
                             <scale>0.001 0.001 0.001</scale>
+                            <!-- <uri> file://src/robotont_description/meshes/body.stl -->
                             <uri> file://src/robotont_description/meshes/body.stl
                             </uri>
                         </mesh>
@@ -211,7 +211,7 @@
             <joint name="rim_back_joint" type="revolute">
                 <pose relative_to='back::rim_link'/>
                 <parent>base_link</parent>
-                <child>back::rim_link</child>   
+                <child>back::rim_link</child>
                 <axis>
                     <xyz>0 0 1</xyz>
                     <limit>

@@ -25,7 +25,19 @@
                     <specular>0.1 1.0 0.3 1</specular>
                 </material>
             </visual>
-            
+
+            <inertial>
+                <origin xyz="0 0 0"/>
+                <mass>0.00113845</mass>
+                <inertia>
+                    <ixx>2.53776e-08</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>2.53776e-08</iyy>
+                    <iyz>0</iyz>
+                    <izz>1.47666e-08</izz>                        
+                </inertia>                   
+            </inertial>            
         </link>        
     </model>
 </sdf>

@@ -80,16 +80,21 @@ ign topic -e -t /topic
 * ign gazebo shapes.sdf
 * ign gazebo diff_driver.sdf
 
+
+
+export IGN_GAZEBO_RESOURCE_PATH=~/robotont_ws/src/robotont_gazebo/ign_worlds
+
+
 ## Run robotont model
 ``` bash
 cd ~/robotont_ws
-ign gazebo ./src/robototnt_gazebo/ign_worlds/robotont.sdf
+ign gazebo robotont.sdf
 ```
 
 ## Run robotont model with camera sensor
 ``` bash
 cd ~/robotont_ws
-ign gazebo ./src/robototnt_gazebo/ign_worlds/roboto_with_depth_camera.sdf
+ign gazebo roboto_with_depth_camera.sdf
 ```
 
 ## Connect with ROS
