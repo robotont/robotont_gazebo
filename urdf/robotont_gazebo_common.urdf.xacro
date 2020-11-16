@@ -27,13 +27,19 @@
         <gazebo reference="${prefix}base_link">
             <material>Gazebo/GreyTransparent </material>
         </gazebo>
+        <!-- If nuc_desc then set true -->'
         <gazebo reference="${prefix}computer_link">
             <material>Gazebo/Black</material>
         </gazebo>
-        <!-- If nuc_desc then set true -->
         <xacro:if value="$(arg add_cam)">
             <gazebo reference="${prefix}camera_link">
                 <material>Gazebo/Grey</material>
+            </gazebo>
+            <gazebo reference="${prefix}camera_assembly_link1">
+                <material>Gazebo/Grey</material>
+            </gazebo>
+            <gazebo reference="${prefix}camera_assembly_link2">
+                <material>Gazebo/GreyTransparent</material>
             </gazebo>
             <!-- Depth camera plugin -->
             <gazebo reference="${prefix}camera_link">
