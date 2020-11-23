@@ -1,0 +1,311 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+
+    <model name='robotont' canonical_link='base_footprint'>
+        <pose relative_to=world> 0 0 0 0 0 0</pose>   <!--the pose is relative to the world by default-->
+        
+        <link name="base_footprint"/>
+
+        <link name="base_link">
+            <pose relative_to="base_footprint">0 0 0.013 0 0 1.57</pose>
+            <visual name='visual'>
+                <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri> file://src/robotont_description/meshes/body.stl
+                        </uri>
+                    </mesh>
+                </geometry>
+                <material>
+                    <ambient>1 1 1 0.8</ambient>
+                    <diffuse>1 1 1 0.8</diffuse>
+                    <specular>1 1 1 0.8</specular>                         
+                </material>
+                <origin>0 0 0 0 0 0</origin>
+            </visual>
+            <collision name='collision'>
+                <pose>0 0 0 1.57 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri> file://src/robotont_description/meshes/simplebody.stl
+                        </uri>
+                    </mesh>
+                </geometry>                    
+            </collision>
+            <inertial>
+                <mass>3</mass>
+                <inertia>
+                    <ixx>0.02462503</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>0.02082228</iyy>
+                    <iyz>0</iyz>
+                    <izz>0.04324237</izz>                        
+                </inertia>
+            </inertial>
+        </link>
+
+        <joint name='base_joint' type='fixed'>
+            <parent>base_footprint</parent>
+            <child>base_link</child>                         
+        </joint>
+
+        <!-- ===================================================== -->
+
+        <include>
+            <name>back</name>
+            <pose relative_to="base_link">0 0.146 0.021 1.57 0 6.2831</pose>                
+            <uri>
+            model://rim
+            </uri>                
+        </include>
+
+        <joint name="rim_back_joint" type="revolute">
+            <pose relative_to='back::rim_link'/>
+            <parent>base_link</parent>
+            <child>back::rim_link</child>   
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <lower>-1.79769e+308</lower>    
+                    <upper>1.79769e+308</upper>    
+                </limit>
+            </axis>                                 
+        </joint>
+
+        <include>
+            <name>right</name>
+            <pose relative_to="base_link">-0.126439709 -0.073 0.021 1.57 0 2.094395102</pose>
+            <uri>
+            model://rim 
+            </uri>
+        </include>
+
+        <joint name="rim_right_joint" type="revolute">
+        <pose relative_to='right::rim_link'/>
+            <parent>base_link</parent>
+            <child>right::rim_link</child>   
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <lower>-1.79769e+308</lower>   
+                    <upper>1.79769e+308</upper>    
+                </limit>
+            </axis>                                 
+        </joint>
+
+        <include>
+            <name>left</name>
+            <pose relative_to="base_link">0.126439709 -0.073 0.021 1.57 0 4.188790205</pose>                
+            <uri>
+            model://rim 
+            </uri>
+        </include>
+
+        <joint name="rim_left_joint" type="revolute">
+        <pose relative_to='left::rim_link'/>
+            <parent>base_link</parent>
+            <child>left::rim_link</child>   
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <lower>-1.79769e+308</lower>   
+                    <upper>1.79769e+308</upper>    
+                </limit>
+            </axis>                                 
+        </joint>
+
+        <link name="camera_assembly_link1">
+        <pose relative_to='base_link'>0 0 0.0125 0 0 0</pose>
+            <visual name='visual'>
+                <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri> file://src/robotont_nuc_description/meshes/camera_assembly_part1.stl
+                        </uri>
+                    </mesh>
+                </geometry>
+                <material>
+                    <ambient>1 1 1 1</ambient>
+                    <diffuse>1 1 1 1</diffuse>
+                    <specular>1 1 1 1</specular>                         
+                </material>                   
+            </visual>
+        </link>            
+        <joint name="camera_assembly_joint1" type="fixed">
+            <parent>base_footprint</parent>
+            <child>camera_assembly_link1</child>
+        </joint>
+
+        <link name="camera_assembly_link2">
+            <pose relative_to='base_link'>0 0 0.0125 0 0 0</pose>
+            <visual name='visual'>
+                <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri> file://src/robotont_nuc_description/meshes/camera_assembly_part2.stl
+                        </uri>
+                    </mesh>
+                </geometry>
+                <material>
+                    <ambient>1 1 1 0.8</ambient>
+                    <diffuse>1 1 1 0.8</diffuse>
+                    <specular>1 1 1 0.8</specular>   
+                </material>
+            </visual>
+        </link>
+        <joint name="camera_assembly_joint2" type="fixed">                
+            <parent>base_footprint</parent>
+            <child>camera_assembly_link2</child>
+        </joint>
+        
+        <!-- =====================Depth Camera ================================ -->
+
+        <link name="depth_camera">
+            <pose relative_to="base_link">0 0.115 0.2025 0 0.0 -1.57</pose>                
+            <inertial>
+            <mass>0.1</mass>
+            <inertia>
+                <ixx>0.000166667</ixx>
+                <iyy>0.000166667</iyy>
+                <izz>0.000166667</izz>
+            </inertia>
+            </inertial>
+            <collision name="collision">
+            <geometry>
+                <!-- <mesh>
+                    <scale>0.001 0.001 0.001</scale>
+                    <uri> file://meshes/d435.dae
+                    </uri>
+                </mesh> -->
+                <box>
+                <size>0.02 0.1 0.02</size>
+                </box>
+            </geometry>
+            </collision>
+            <visual name="visual">
+            <geometry>
+                <!-- <mesh>
+                    <scale>0.001 0.001 0.001</scale>
+                    <uri> file://meshes/d435.dae
+                    </uri>
+                </mesh> -->
+                <box>
+                <size>0.02 0.1 0.02</size>
+                </box>
+            </geometry>
+            </visual>
+            <sensor name="depth_camera1" type="depth_camera">
+                <update_rate>10</update_rate>
+                <topic>depth_camera</topic>
+                <camera>
+                    <horizontal_fov>1.05</horizontal_fov>
+                    <image>
+                    <width>256</width>
+                    <height>256</height>
+                    <format>R_FLOAT32</format>
+                    </image>
+                    <clip>
+                    <near>0.1</near>
+                    <far>10.0</far>
+                    </clip>
+                </camera>
+            </sensor>
+        </link>
+
+        <joint name='camera_base_joint' type='fixed'>
+            <pose>0 0.12 0.22 0 0.0 -1.57</pose>
+            <parent>base_link</parent>
+            <child>depth_camera</child>                         
+        </joint>
+
+        <!-- Computer -->
+        <link name="computer_link">
+                <pose relative_to='base_link'>-0.01 0 0.085 0 0 0</pose>
+            <visual name="visual">
+                <geometry>
+                    <box>
+                        <size>0.11 0.11 0.04</size>
+                    </box>
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+                <material>
+                    <ambient>0.1 0.1 0.1 1</ambient>
+                    <diffuse>0.1 0.1 0.1 1</diffuse>
+                    <specular>0.1 0.1 0.1 1</specular>   
+                </material>
+            </visual>
+            <collision name="collision">
+                <geometry>
+                    <box>
+                        <size>0.11 0.11 0.04</size>
+                    </box>
+                </geometry>
+                <origin>0 0 0 0 0 0</origin>
+            </collision>
+        </link>
+        <joint name='computer_joint' type='fixed'>
+            <parent>base_link</parent>
+            <child>computer_link</child>                         
+        </joint>
+        
+        <plugin
+            filename="ignition-gazebo-velocity-control-system"
+            name="ignition::gazebo::systems::VelocityControl">
+        </plugin>
+
+        <!-- Moving Forward-->
+        <plugin filename="libignition-gazebo-triggered-publisher-system.so"
+                name="ignition::gazebo::systems::TriggeredPublisher">
+            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
+                <match field="data">16777235</match>
+            </input>
+            <output type="ignition.msgs.Twist" topic="/model/robotont/cmd_vel">
+                linear: {x: 1}, angular: {z: 0.0}
+            </output>
+        </plugin>
+
+        <!-- Moving Backward-->
+        <plugin filename="libignition-gazebo-triggered-publisher-system.so"
+                name="ignition::gazebo::systems::TriggeredPublisher">
+            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
+                <match field="data">16777237</match>
+            </input>
+            <output type="ignition.msgs.Twist" topic="/model/robotont/cmd_vel">
+                linear: {x: -1}, angular: {z: 0.0}
+            </output>
+        </plugin>
+
+        <!-- Rotating right-->
+        <plugin filename="libignition-gazebo-triggered-publisher-system.so"
+                name="ignition::gazebo::systems::TriggeredPublisher">
+            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
+                <match field="data">16777236</match>
+            </input>
+            <output type="ignition.msgs.Twist" topic="/model/robotont/cmd_vel">
+                linear: {x: 0.0}, angular: {z: -1}
+            </output>
+        </plugin>
+
+        <!--Rotating left-->
+        <plugin filename="libignition-gazebo-triggered-publisher-system.so"
+                name="ignition::gazebo::systems::TriggeredPublisher">
+            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
+                <match field="data">16777234</match>
+            </input>
+            <output type="ignition.msgs.Twist" topic="/model/robotont/cmd_vel">
+                linear: {x: 0.0}, angular: {z: 1}
+            </output>
+        </plugin>
+
+        <plugin
+            filename="ignition-gazebo-sensors-system"
+            name="ignition::gazebo::systems::Sensors">
+            <render_engine>ogre2</render_engine>
+        </plugin>
+
+        
+
+    </model>
+</sdf>

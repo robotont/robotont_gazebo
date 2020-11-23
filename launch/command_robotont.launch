@@ -8,8 +8,10 @@
     </include> -->
 
     <!-- <include file="$(find ros_ign_gazebo)/launch/ign_gazebo.launch">
-        <arg name="ign_args" value="-r robotont_with_depth_camera.sdf"/>
+        <arg name="ign_args" value="-r empty_world.sdf"/>
     </include> -->
+
+    
 
   
     <node name="bridge_cmd_vel" pkg="ros_ign_bridge" type="parameter_bridge" args="/model/robotont/cmd_vel@geometry_msgs/Twist@ignition.msgs.Twist /model/robotont/odometry@nav_msgs/Odometry@ignition.msgs.Odometry" />  

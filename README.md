@@ -173,6 +173,6 @@ References:
 
 Current Issues:
 Odometry ???   - /model/robotont/odometry@nav_msgs/Odometry@ignition.msgs.Odometry
-uri 
+uri - Absolute path
 spawn a model into the world 
-launch the models from ROS or from ign gazebo ?
+launch the models from ROS or from ign gazebo?

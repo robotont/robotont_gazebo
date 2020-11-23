@@ -8,35 +8,6 @@
 
         <link name="base_link">
             <pose relative_to="base_footprint">0 0 0.013 0 0 1.57</pose>
-            <!-- <pose relative_to="base_footprint">0 0 0 0 0 1.5707</pose> -->
-            <visual name='visual'>
-                <geometry>
-                    <mesh>
-                        <scale>0.001 0.001 0.001</scale>
-                        <!-- <uri> file://src/robotont_description/meshes/body.stl -->
-                        <uri> file://src/robotont_description/meshes/body.stl
-                        </uri>
-                    </mesh>
-                </geometry>
-                <material>
-                    <!-- <color rgba="1 1 1 0.8"/> -->
-                    <ambient>1 1 1 0.8</ambient>
-                    <diffuse>1 1 1 0.8</diffuse>
-                    <specular>1 1 1 0.8</specular>                         
-                </material>
-                <!-- <origin rpy="0 0 ${pi/2}"  xyz="0 0 0"/> -->
-                <origin>0 0 0 0 0 0</origin>
-            </visual>
-            <collision name='collision'>
-                <geometry>
-                    <mesh>
-                        <scale>0.001 0.001 0.001</scale>
-                        <uri> file://src/robotont_description/meshes/simplebody.stl
-                        </uri>
-                    </mesh>
-                </geometry>
-                <origin>0 0 0 1.57 0 1.57</origin>
-            </collision>
             <inertial>
                 <mass>3</mass>
                 <inertia>
@@ -48,10 +19,39 @@
                     <izz>0.04324237</izz>                        
                 </inertia>
             </inertial>
+            <visual name='visual'>
+                
+                <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri> file://src/robotont_description/meshes/body.stl
+                        <!-- <uri> file://src/robotont_description/meshes/simplebody.stl -->
+                        </uri>
+                    </mesh>
+                </geometry>
+                <material>
+                    <!-- <ambient>1 1 1 0.8</ambient>
+                    <diffuse>1 1 1 0.8</diffuse>
+                    <specular>1 1 1 0.8</specular>            -->
+                    <ambient>1 0 1 1</ambient>
+                    <diffuse>1 0 1 1</diffuse>
+                    <specular>1 0 1 1</specular>                 
+                </material>
+                <origin>0 0 0 0 0 0</origin>
+            </visual>
+            <collision name='collision'>
+                <pose>0 0 0 1.57 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri> file://src/robotont_description/meshes/simplebody.stl
+                        </uri>
+                    </mesh>
+                </geometry>                
+            </collision>            
         </link>
 
         <joint name='base_joint' type='fixed'>
-            <pose>0 0 0.013 0 0 0</pose>
             <parent>base_footprint</parent>
             <child>base_link</child>                         
         </joint>

@@ -94,6 +94,8 @@
 
             <!-- KeyPublisher plugin-->
             <plugin filename="KeyPublisher" name="Key publisher"/>
+
+            <plugin filename="ImageDisplay" name="Image display"/>
             
         </gui>
 
@@ -141,11 +143,10 @@
             <name>robotont</name>
             <pose relative_to=world> 0 0 0 0 0 0</pose>
             <uri>
-            model://robotont
+            <!-- model://robotont -->
+            model://robotont_with_depth_camera
             </uri>
         </include>
-
-        
 
     </world>
 </sdf>
