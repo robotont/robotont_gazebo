@@ -377,8 +377,7 @@
             <name>robotont</name>
             <pose relative_to=world> 0 0 0 0 0 0</pose>
             <uri>
-            model://robotont
-            <!- - model://robotont_with_depth_camera - ->
+            model://robotont_with_depth_camera
             </uri>
         </include> -->
 

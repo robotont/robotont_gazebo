@@ -157,11 +157,13 @@ Dont forget to run the simulation on ignition gazebo (press play button)
 
 ros side: 
 1. roscore
+Bridge the camera or depth camera image:
 2. rosrun ros_ign_bridge parameter_bridge /depth_camera@sensor_msgs/Image@ignition.msgs.Image
-3. rostopic list 
-it should appear the /depth_camera topic
-4. rqt_image_view      
-Update the window with the topic /depth_camera
+3. rosrun ros_ign_bridge parameter_bridge /camera@sensor_msgs/Image@ignition.msgs.Image
+4. rostopic list 
+it should appear the /camera or /depth_camera topic
+5. rqt_image_view      
+Update the window with the topic /depth_camera or /camera
 
 
 References:
@@ -176,3 +178,10 @@ Odometry ???   - /model/robotont/odometry@nav_msgs/Odometry@ignition.msgs.Odomet
 uri - Absolute path
 spawn a model into the world 
 launch the models from ROS or from ign gazebo?
+
+
+
+Spawn a robot using the terminal: 
+
+rosrun ros_ign_gazebo create -world Empty_world -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont_with_depth_camera/robotont_with_depth_camera.sdf'
+

@@ -15,7 +15,7 @@
 
   
     <node name="bridge_cmd_vel" pkg="ros_ign_bridge" type="parameter_bridge" args="/model/robotont/cmd_vel@geometry_msgs/Twist@ignition.msgs.Twist /model/robotont/odometry@nav_msgs/Odometry@ignition.msgs.Odometry" />  
-    <node name="bridge_image_raw" pkg="ros_ign_bridge" type="parameter_bridge" args="/depth_camera@sensor_msgs/Image@ignition.msgs.Image" />  
+    <node name="bridge_image_raw" pkg="ros_ign_bridge" type="parameter_bridge" args="/depth_camera@sensor_msgs/Image@ignition.msgs.Image /camera@sensor_msgs/Image@ignition.msgs.Image" />  
     <node name="bridge_pointcloud" pkg="ros_ign_bridge" type="parameter_bridge" args="/depth_camera/points@sensor_msgs/PointCloud2@ignition.msgs.PointCloudPacked" />  
 
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robotont_gazebo)/config/config.rviz"/>
