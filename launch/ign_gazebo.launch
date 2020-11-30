@@ -1,7 +1,32 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <launch>
-<arg name="model" default="robotont_gazebo_nuc"/>
 
-<node name="spawn_sdf" pkg="ros_ign_gazebo" type="create" args="-world default -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont/robotont.sdf'"/>
+  <arg name="world" default="empty"/>
+  <arg name="ign_args" default=""/>
 
-</launch>   
+  <include file="$(find ros_ign_gazebo)/launch/ign_gazebo.launch">
+    <arg name="ign_args" value="-r -v 3 $(arg world).sdf"/>
+  </include>
+
+  <!-- URDF from param, package model -->
+  <!-- <param name="robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/robotont_gazebo_basic.urdf.xacro"/> -->
+  <!-- <param name="robot_description" textfile="$(find ros_ign_gazebo_demos)/models/sphere.urdf" /> -->
+
+  <!-- <node
+    pkg="ros_ign_gazebo"
+    type="create"
+    name="$(anon ros_ign_create_sphere)"
+    output="screen"
+    args="-world $(arg world) -param robot_description -name spawned -allow_renaming true -z 1">
+  </node> -->
+
+  
+  <!-- SDF from file, package model -->
+  <node
+    pkg="ros_ign_gazebo"
+    type="create"
+    name="$(anon ros_ign_create_robotont)"
+    output="screen"    
+    args="-world $(arg world) -file $(find robotont_gazebo)/ign_worlds/robotont_with_depth_camera/robotont_with_depth_camera.sdf -name robotont -allow_renaming true -x 1 -y 1">
+  </node>
+</launch>

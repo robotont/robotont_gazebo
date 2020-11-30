@@ -2,7 +2,8 @@
 <sdf version="1.7">
     
     <model name='robotont' canonical_link='base_footprint'>
-        <!-- <pose relative_to=world> 0 0 0 0 0 0</pose>   the pose is relative to the world by default -->
+
+        <pose relative_to=world> 0 0 0 0 0 0</pose>  
         
         <link name="base_footprint"/>
 
@@ -125,7 +126,7 @@
 
         <plugin
             filename="ignition-gazebo-velocity-control-system"
-            name="ignition::gazebo::systems::VelocityControl">
+            name="ignition::gazebo::systems::VelocityControl">            
         </plugin>
 
         <!-- Moving Forward-->
@@ -170,6 +171,17 @@
             <output type="ignition.msgs.Twist" topic="/model/robotont/cmd_vel">
                 linear: {x: 0.0}, angular: {z: 1}
             </output>
-        </plugin>
+        </plugin>    
+
+        <plugin
+            filename="ignition-gazebo-diff-drive-system"
+            name="ignition::gazebo::systems::DiffDrive">
+            <left_joint>rim_left_joint</left_joint>
+            <right_joint>rim_right_joint</right_joint>
+            <wheel_separation>0.292</wheel_separation>
+            <wheel_radius>0.061</wheel_radius>
+            <odom_publish_frequency>1</odom_publish_frequency>
+        </plugin>    
+        
     </model>
 </sdf>
