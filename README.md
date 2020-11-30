@@ -174,7 +174,7 @@ References:
 
 
 Current Issues:
-Odometry ???   - /model/robotont/odometry@nav_msgs/Odometry@ignition.msgs.Odometry
+Odometry ???   - 
 uri - Absolute path
 spawn a model into the world 
 launch the models from ROS or from ign gazebo?
@@ -185,3 +185,63 @@ Spawn a robot using the terminal:
 
 rosrun ros_ign_gazebo create -world Empty_world -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont_with_depth_camera/robotont_with_depth_camera.sdf'
 
+ign gazebo empty_world.sdf
+
+rosrun ros_ign_gazebo create -world Empty_world -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont/robotont.sdf' -x 0 -y 2 -Y 1.57
+
+
+Using the odometry provided by diff_drive:
+ign topic -e -t /model/vehicle_blue/odometry
+rosrun ros_ign_bridge parameter_bridge /model/robotont/odometry@nav_msgs/Odometry@ignition.msgs.Odometry
+
+
+Creating a Plugin 
+It is neccesary to clone the repo 
+ign-plugin
+``` bash 
+mkdir build/
+cd build/
+cmake ..
+sudo make install
+```
+
+https://ignitionrobotics.org/api/gazebo/2.10/createsystemplugins.html
+Our case: ISystemPostUpdate
+
+
+
+export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:~/gazebo_plugin_tutorial/build
+
+
+
+
+https://floodshao.github.io/2020/06/09/GUI-Err-Ogre2RenderEngine-cc-732-Unable-to-create-the-rendering-window-when-running-ignition-gazebo/
+
+Migration from Gazebo-classic: Plugins
+https://ignitionrobotics.org/api/gazebo/3.2/migrationplugins.html
+
+
+Create System Plugins
+https://ignitionrobotics.org/api/gazebo/3.2/createsystemplugins.html
+
+gaz plugin hello world
+http://gazebosim.org/tutorials?tut=plugins_hello_world&cat=write_plugin
+
+
+
+Environment variables:
+  IGN_GAZEBO_RESOURCE_PATH    Colon separated paths used to locate
+ resources. Can be useful to find an SDF file.
+
+  IGN_GAZEBO_SYSTEM_PLUGIN_PATH    Colon separated paths used to
+ locate system plugins.
+
+  IGN_GUI_PLUGIN_PATH    Colon separated paths used to locate GUI
+ plugins.
+
+  IGN_GAZEBO_NETWORK_ROLE     Participant role used in a distributed
+ simulation environment. Role is one of [PRIMARY, SECONDARY]. This is
+ deprecated in ign-gazebo2. Please use --network-role instead.
+
+  IGN_GAZEBO_NETWORK_SECONDARIES    Number of secondary participants
+ expected to join a distributed simulation environment. (Primary only)
