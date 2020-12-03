@@ -80,6 +80,8 @@ ign topic -e -t /topic
 * ign gazebo shapes.sdf
 * ign gazebo diff_drive.sdf
 
+
+
 ## In order to find the world and model: 
 ``` bash
 export IGN_GAZEBO_RESOURCE_PATH=~/robotont_ws/src/robotont_gazebo/ign_worlds
@@ -100,7 +102,7 @@ ign gazebo roboto_with_depth_camera.sdf
 ## Connect with ROS
 In order to connect ignition gazebo with ros it is neccesary to have ros_ign_bridge package. 
 
-* The binary installation is only available for Blueprint. 
+* The binary installation is only available for ignition Blueprint. 
 ``` bash 
 sudo apt install ros-melodic-ros-ign
 ```
@@ -146,6 +148,7 @@ To connect with ros:
 2. rosrun ros_ign_bridge parameter_bridge /model/robotont/cmd_vel@geometry_msgs/Twist@ignition.msgs.Twist
 3. rostopic pub /model/robotont/cmd_vel geometry_msgs/Twist ...
 
+
 ### Camera:
 ignition gazebo side: 
 cd catking_ws that contains the robotont packages
@@ -165,58 +168,79 @@ it should appear the /camera or /depth_camera topic
 5. rqt_image_view      
 Update the window with the topic /depth_camera or /camera
 
+## Spawn a robot
+It is possible to spawn a model including directly on the world (sdf file) or through ros_ign_gazebo package. 
+### Spawn a robot directly on the world: 
+The sdf file must contain the name of the model:
+``` bash
+<include>
+    <name>robotont</name>
+    <pose relative_to=world> 0 0 0 0 0 0</pose>
+    <uri>            
+    model://robotont_with_depth_camera
+    </uri>
+</include>
+```
+Available options:
+* model://robotont
+* model://robotont_with_depth_camera
+* model://ar_marker
 
-References:
-* http://sdformat.org/spec
-* http://sdformat.org/tutorials
-* https://github.com/ignitionrobotics/ros_ign/tree/melodic/ros_ign_bridge#prerequisites
-* https://ignitionrobotics.org/libs/gazebo
+### Spawn a robot using the terminal: 
+We must launch a world:
+Available options:
+* ar_marker_world.sdf
+* between.sdf
+* colors.sdf
+* empty_world.sdf
+* ign_minimaze.sdf
+* minimaze2.sdf
 
-
-Current Issues:
-* Odometry ???   - 
-* <uri> - Absolute path
-* spawn a model into the world 
-* launch the models from ROS or from ign gazebo? (priority?)
-
-
-
-## Spawn a robot using the terminal: 
 ``` bash
 ign gazebo empty_world.sdf
 ```
+In a different terminal, include the model 
 ``` bash
 rosrun ros_ign_gazebo create -world Empty_world -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont_with_depth_camera/robotont_with_depth_camera.sdf'
 ```
-Change the path and world's name accordingly
-Note that the name of the world is defined in the .sdf file. 
+Note: Change the path and world's name accordingly. The name of the world is defined in the .sdf file.
 
-It is also possibe to spawn the model in a desired location 
+It is also possibe to spawn the model in a desired position and orientation by including some arguments: e.g.
 ``` bash
 ign gazebo colors.sdf
 ```
 ``` bash
 rosrun ros_ign_gazebo create -world Colors -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont/robotont.sdf' -x 0 -y 2 -Y 1.57
 ```
-for more commands: 
-rosrun ros_ign_gazebo create --help 
-
-
-### Using the odometry provided by diff_drive:
+For more commands: 
 ``` bash
-ign topic -e -t /model/vehicle_blue/odometry
-rosrun ros_ign_bridge parameter_bridge /model/robotont/odometry@nav_msgs/Odometry@ignition.msgs.Odometry
+rosrun ros_ign_gazebo create --help 
 ```
 
-# Creating a Plugin 
+### Using the odometry provided by odom_drive:
+
+``` bash
+ign topic -l
+```
+The /robotont/odom topic should should appear in the list
+
+``` bash
+ign topic -e -t /robotont/odom
+rosrun ros_ign_bridge parameter_bridge /robotont/odom@nav_msgs/Odometry@ignition.msgs.Odometry
+```
+
+
+# Generate the odom Plugin 
 It is neccesary to clone the repo 
 ign-plugin
-we have to create 3 files: 
-* Header: odom_plugin.hh
-* Implement source odom_plugin.cc
+
+This repository contains an odom_ign_plugin folder with 3 files:
+* Header: OdomOmnidirectional.hh
+* Implement source OdomOmnidirectional.cc
 * CMakeList.txt
 
 ``` bash 
+ cd odom_ign_plugin
 mkdir build/
 cd build/
 cmake ..
@@ -226,9 +250,9 @@ make
 It should generate a .so file 
 we can import it with 
 ``` bash 
+cd odom_ign_plugin
 export IGN_GAZEBO_SYSTEM_PLUGIN_PATH=`pwd`/build
 ```
-
 
 
 Environment variables:
@@ -247,3 +271,38 @@ Environment variables:
 
   IGN_GAZEBO_NETWORK_SECONDARIES    Number of secondary participants
  expected to join a distributed simulation environment. (Primary only)
+
+
+
+ # Teleoperation directly on ignition gazebo
+ To move the marker press:
+     i
+ j   k   l
+     ,
+ Rotation 
+ u   o
+
+ To move the robot directly on ignition gazebo press:
+ arrow up
+ arrow down
+ arrow left
+ arrow right
+ Rotation 
+ a   d
+ Stop s 
+
+
+# Current Issues:
+
+* I could not include the mesh of the camera. Most probably related to the paths. Right now it is simulated using a box. 
+* spawn a model using ros launch files
+* There are also ignition launch files. I couldnt dig into it. It might be helpful to spawn models and control worlds / plugins in a better way. 
+
+# References:
+* http://sdformat.org/spec
+* http://sdformat.org/tutorials
+* https://github.com/ignitionrobotics/ros_ign/tree/melodic/ros_ign_bridge#prerequisites
+* https://ignitionrobotics.org/libs/gazebo
+
+Here more information about the bridge communication between ROS and Ignition, and a table with correspondence of message types
+https://github.com/ignitionrobotics/ros_ign/tree/melodic/ros_ign_bridge
