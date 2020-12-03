@@ -162,14 +162,14 @@
                     <pose>0 0 0 0 -0 0</pose>
                     <geometry>
                         <mesh>
-                            <uri>file://meshes/bricks_test.dae</uri>
+                            <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>                            
                             <scale>1 1 1</scale>
                         </mesh>
                     </geometry>
                     <material>
                         <lighting>1</lighting>
                         <script>
-                        <uri>file://media/materials/scripts/WhiteBricks.material</uri>
+                        <uri>file://src/robotont_gazebo/media/materials/scripts/WhiteBricks.material</uri>
                         <name>RoboTont/WhiteBricks</name>
                         </script>
                         <shader type='vertex'>
@@ -189,7 +189,7 @@
                     <pose>0 0 0 0 -0 0</pose>
                     <geometry>
                         <mesh>
-                        <uri>file://meshes/bricks_test.dae</uri>
+                        <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                         <scale>1 1 1</scale>
                         </mesh>
                     </geometry>
@@ -488,7 +488,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -561,7 +561,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -588,7 +588,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -661,7 +661,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -688,7 +688,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -761,7 +761,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -788,7 +788,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -861,7 +861,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -888,7 +888,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -961,7 +961,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -988,7 +988,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1061,7 +1061,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1088,7 +1088,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1161,7 +1161,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1188,7 +1188,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1261,7 +1261,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1288,7 +1288,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1361,7 +1361,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1388,7 +1388,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1461,7 +1461,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1488,7 +1488,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1561,7 +1561,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1588,7 +1588,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1661,7 +1661,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
@@ -1688,7 +1688,7 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
                     <mesh>
-                    <uri>file://meshes/bricks_test.dae</uri>
+                    <uri>file://src/robotont_gazebo/meshes/bricks2_test.dae</uri>
                     <scale>1 1 1</scale>
                     </mesh>
                 </geometry>
