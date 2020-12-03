@@ -211,8 +211,8 @@ mkdir build/
 cd build/
 cmake ..
 make
-sudo make install
 ```
+
 It should generate a .so file 
 we can import it with 
 ``` bash 

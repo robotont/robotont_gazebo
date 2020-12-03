@@ -26,17 +26,13 @@
                     <mesh>
                         <scale>0.001 0.001 0.001</scale>
                         <uri> file://src/robotont_description/meshes/body.stl
-                        <!-- <uri> file://src/robotont_description/meshes/simplebody.stl -->
                         </uri>
                     </mesh>
                 </geometry>
                 <material>
-                    <!-- <ambient>1 1 1 0.8</ambient>
+                    <ambient>1 1 1 0.8</ambient>
                     <diffuse>1 1 1 0.8</diffuse>
-                    <specular>1 1 1 0.8</specular>            -->
-                    <ambient>1 0 1 1</ambient>
-                    <diffuse>1 0 1 1</diffuse>
-                    <specular>1 0 1 1</specular>                 
+                    <specular>1 1 1 0.8</specular>                                               
                 </material>
                 <origin>0 0 0 0 0 0</origin>
             </visual>
@@ -206,26 +202,14 @@
             </output>
         </plugin> 
 
-        <!-- <plugin
-            filename="ignition-gazebo-diff-drive-system"
-            name="ignition::gazebo::systems::DiffDrive">
-            <left_joint>rim_left_joint</left_joint>
-            <right_joint>rim_right_joint</right_joint>
-            <wheel_separation>0.292</wheel_separation>
-            <wheel_radius>0.061</wheel_radius>
-            <odom_publish_frequency>50</odom_publish_frequency>
-        </plugin> -->
-
         <plugin
             filename="libOdomOmnidirectional.so"
             name="ignition::gazebo::systems::OmniDrive">
             <commandTopic>/model/robotont/cmd_vel</commandTopic>
             <odometryTopic>/robotont/odom</odometryTopic>
             <odometryRate>50</odometryRate>
-            <!-- for the frame it is taking the canonical_link -->
-
-        </plugin>
-       
+            <!-- for the frame it is taking the canonical_link (base_footprint)-->
+        </plugin>       
     </model>
 </sdf>
 
