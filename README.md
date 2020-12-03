@@ -174,40 +174,54 @@ References:
 
 
 Current Issues:
-Odometry ???   - 
-uri - Absolute path
-spawn a model into the world 
-launch the models from ROS or from ign gazebo?
+* Odometry ???   - 
+* <uri> - Absolute path
+* spawn a model into the world 
+* launch the models from ROS or from ign gazebo? (priority?)
 
 
 
-Spawn a robot using the terminal: 
-
+## Spawn a robot using the terminal: 
+``` bash
 rosrun ros_ign_gazebo create -world Empty_world -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont_with_depth_camera/robotont_with_depth_camera.sdf'
-
+```
+``` bash
 ign gazebo empty_world.sdf
-
+```
+``` bash
 rosrun ros_ign_gazebo create -world Empty_world -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont/robotont.sdf' -x 0 -y 2 -Y 1.57
+```
 
-
-Using the odometry provided by diff_drive:
+### Using the odometry provided by diff_drive:
+``` bash
 ign topic -e -t /model/vehicle_blue/odometry
 rosrun ros_ign_bridge parameter_bridge /model/robotont/odometry@nav_msgs/Odometry@ignition.msgs.Odometry
+```
 
-
-Creating a Plugin 
+# Creating a Plugin 
 It is neccesary to clone the repo 
 ign-plugin
+we have to create 3 files: 
+* Header: odom_plugin.hh
+* Implement source odom_plugin.cc
+* CMakeList.txt
+
 ``` bash 
 mkdir build/
 cd build/
 cmake ..
-sudo make install
+make
 ```
+
+It should generate a .so file 
+we can import it with 
+``` bash 
+export IGN_GAZEBO_SYSTEM_PLUGIN_PATH=`pwd`/build
+```
+
 
 https://ignitionrobotics.org/api/gazebo/2.10/createsystemplugins.html
 Our case: ISystemPostUpdate
-
 
 
 export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:~/gazebo_plugin_tutorial/build
