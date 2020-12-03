@@ -198,7 +198,7 @@
                 <match field="data">83</match>
             </input>
             <output type="ignition.msgs.Twist" topic="/model/robotont/cmd_vel">
-                linear: {y: 0.0}, angular: {z: 0.0}
+                linear: {x: 0.0 y: 0.0}, angular: {z: 0.0}
             </output>
         </plugin> 
 

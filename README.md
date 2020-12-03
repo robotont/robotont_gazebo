@@ -183,14 +183,24 @@ Current Issues:
 
 ## Spawn a robot using the terminal: 
 ``` bash
-rosrun ros_ign_gazebo create -world Empty_world -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont_with_depth_camera/robotont_with_depth_camera.sdf'
-```
-``` bash
 ign gazebo empty_world.sdf
 ```
 ``` bash
-rosrun ros_ign_gazebo create -world Empty_world -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont/robotont.sdf' -x 0 -y 2 -Y 1.57
+rosrun ros_ign_gazebo create -world Empty_world -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont_with_depth_camera/robotont_with_depth_camera.sdf'
 ```
+Change the path and world's name accordingly
+Note that the name of the world is defined in the .sdf file. 
+
+It is also possibe to spawn the model in a desired location 
+``` bash
+ign gazebo colors.sdf
+```
+``` bash
+rosrun ros_ign_gazebo create -world Colors -file '/home/fabian/robotont_ws/src/robotont_gazebo/ign_worlds/robotont/robotont.sdf' -x 0 -y 2 -Y 1.57
+```
+for more commands: 
+rosrun ros_ign_gazebo create --help 
+
 
 ### Using the odometry provided by diff_drive:
 ``` bash
@@ -218,28 +228,6 @@ we can import it with
 ``` bash 
 export IGN_GAZEBO_SYSTEM_PLUGIN_PATH=`pwd`/build
 ```
-
-
-https://ignitionrobotics.org/api/gazebo/2.10/createsystemplugins.html
-Our case: ISystemPostUpdate
-
-
-export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:~/gazebo_plugin_tutorial/build
-
-
-
-
-https://floodshao.github.io/2020/06/09/GUI-Err-Ogre2RenderEngine-cc-732-Unable-to-create-the-rendering-window-when-running-ignition-gazebo/
-
-Migration from Gazebo-classic: Plugins
-https://ignitionrobotics.org/api/gazebo/3.2/migrationplugins.html
-
-
-Create System Plugins
-https://ignitionrobotics.org/api/gazebo/3.2/createsystemplugins.html
-
-gaz plugin hello world
-http://gazebosim.org/tutorials?tut=plugins_hello_world&cat=write_plugin
 
 
 

@@ -1,0 +1,847 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+    
+    <world name="Between_world">
+        <physics name="1ms" type="ignored">
+            <max_step_size>0.001</max_step_size>
+            <real_time_factor>1.0</real_time_factor>
+        </physics>
+        <plugin
+            filename="libignition-gazebo-physics-system.so"
+            name="ignition::gazebo::systems::Physics">
+        </plugin>
+        <plugin
+            filename="libignition-gazebo-user-commands-system.so"
+            name="ignition::gazebo::systems::UserCommands">
+        </plugin>
+        <plugin
+            filename="libignition-gazebo-scene-broadcaster-system.so"
+            name="ignition::gazebo::systems::SceneBroadcaster">
+        </plugin>
+
+        <gui fullscreen="0">
+
+            <!-- 3D scene -->
+            <plugin filename="GzScene3D" name="3D View">
+                <ignition-gui>
+                <title>3D View</title>
+                <property type="bool" key="showTitleBar">false</property>
+                <property type="string" key="state">docked</property>
+                </ignition-gui>
+
+                <engine>ogre2</engine>
+                <scene>scene</scene>
+                <ambient_light>0.4 0.4 0.4</ambient_light>
+                <background_color>0.8 0.8 0.8</background_color>
+            </plugin>
+
+            <!-- World control -->
+            <plugin filename="WorldControl" name="World control">
+                <ignition-gui>
+                <title>World control</title>
+                <property type="bool" key="showTitleBar">false</property>
+                <property type="bool" key="resizable">false</property>
+                <property type="double" key="height">72</property>
+                <property type="double" key="width">121</property>
+                <property type="double" key="z">1</property>
+
+                <property type="string" key="state">floating</property>
+                <anchors target="3D View">
+                    <line own="left" target="left"/>
+                    <line own="bottom" target="bottom"/>
+                </anchors>
+                </ignition-gui>
+
+                <play_pause>true</play_pause>
+                <step>true</step>
+                <start_paused>true</start_paused>
+                <service>/world/Moving_robot/control</service>
+                <stats_topic>/world/Moving_robot/stats</stats_topic>
+            </plugin>
+
+            <!-- World statistics -->
+            <plugin filename="WorldStats" name="World stats">
+                <ignition-gui>
+                <title>World stats</title>
+                <property type="bool" key="showTitleBar">false</property>
+                <property type="bool" key="resizable">false</property>
+                <property type="double" key="height">110</property>
+                <property type="double" key="width">290</property>
+                <property type="double" key="z">1</property>
+
+                <property type="string" key="state">floating</property>
+                <anchors target="3D View">
+                    <line own="right" target="right"/>
+                    <line own="bottom" target="bottom"/>
+                </anchors>
+                </ignition-gui>
+
+                <sim_time>true</sim_time>
+                <real_time>true</real_time>
+                <real_time_factor>true</real_time_factor>
+                <iterations>true</iterations>
+                <topic>/world/Moving_robot/stats</topic>
+
+            </plugin>
+
+            <!-- Entity tree -->
+            <plugin filename="EntityTree" name="Entity tree">
+            </plugin>
+
+            <!-- Entity tree -->
+            <plugin filename="ComponentInspector" name="Component inspector">
+            </plugin>
+
+            <!-- KeyPublisher plugin-->
+            <plugin filename="KeyPublisher" name="Key publisher"/>
+
+            <plugin filename="ImageDisplay" name="Image display"/>
+            
+        </gui>
+
+        <light type="directional" name="sun">
+            <cast_shadows>true</cast_shadows>
+            <pose>0 0 10 0 0 0</pose>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+            <attenuation>
+                <range>1000</range>
+                <constant>0.9</constant>
+                <linear>0.01</linear>
+                <quadratic>0.001</quadratic>
+            </attenuation>
+            <direction>-0.5 0.1 -0.9</direction>
+        </light>
+
+        <model name="ground_plane">
+            <static>true</static>
+            <link name="link">
+                <collision name="collision">
+                <geometry>
+                    <plane>
+                    <normal>0 0 1</normal>
+                    </plane>
+                </geometry>
+                </collision>
+                <visual name="visual">
+                <geometry>
+                    <plane>
+                    <normal>0 0 1</normal>
+                    <size>100 100</size>
+                    </plane>
+                </geometry>
+                <material>
+                    <ambient>0.8 0.8 0.8 1</ambient>
+                    <diffuse>0.8 0.8 0.8 1</diffuse>
+                    <specular>0.8 0.8 0.8 1</specular>
+                </material>
+                </visual>
+            </link>
+        </model>
+
+        <model name='between'>
+        <link name='link_2'>
+            <inertial>
+            <mass>1</mass>
+            <inertia>
+                <ixx>0.166667</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.166667</iyy>
+                <iyz>0</iyz>
+                <izz>0.166667</izz>
+            </inertia>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            </inertial>
+            <pose frame=''>-1.3748 -0.012991 0 0 0 -1.5708</pose>
+            <gravity>1</gravity>
+            <self_collide>0</self_collide>
+            <kinematic>0</kinematic>
+            <enable_wind>0</enable_wind>
+            <visual name='visual'>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <material>
+                <lighting>1</lighting>
+                <script>
+                <uri>file://src/robotont_gazebo/media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+                </script>
+                <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+                </shader>
+                <ambient>0.3 0.3 0.3 1</ambient>
+                <diffuse>0.7 0.7 0.7 1</diffuse>
+                <specular>0.01 0.01 0.01 1</specular>
+                <emissive>0 0 0 1</emissive>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+            </visual>
+            <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <surface>
+                <friction>
+                <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                </ode>
+                <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                    <slip>0</slip>
+                    </ode>
+                </torsional>
+                </friction>
+                <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                </bullet>
+                </contact>
+            </surface>
+            </collision>
+        </link>
+        <link name='link_2_clone'>
+            <inertial>
+            <mass>1</mass>
+            <inertia>
+                <ixx>0.166667</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.166667</iyy>
+                <iyz>0</iyz>
+                <izz>0.166667</izz>
+            </inertia>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            </inertial>
+            <pose frame=''>0.567999 -4.01809 0 0 0 -1.5708</pose>
+            <gravity>1</gravity>
+            <self_collide>0</self_collide>
+            <kinematic>0</kinematic>
+            <enable_wind>0</enable_wind>
+            <visual name='visual'>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <material>
+                <lighting>1</lighting>
+                <script>
+                <uri>file://src/robotont_gazebo/media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+                </script>
+                <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+                </shader>
+                <ambient>0.3 0.3 0.3 1</ambient>
+                <diffuse>0.7 0.7 0.7 1</diffuse>
+                <specular>0.01 0.01 0.01 1</specular>
+                <emissive>0 0 0 1</emissive>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+            </visual>
+            <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <surface>
+                <friction>
+                <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                </ode>
+                <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                    <slip>0</slip>
+                    </ode>
+                </torsional>
+                </friction>
+                <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                </bullet>
+                </contact>
+            </surface>
+            </collision>
+        </link>
+        <link name='link_2_clone_0'>
+            <inertial>
+            <mass>1</mass>
+            <inertia>
+                <ixx>0.166667</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.166667</iyy>
+                <iyz>0</iyz>
+                <izz>0.166667</izz>
+            </inertia>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            </inertial>
+            <pose frame=''>0.490312 4.0369 0 0 0 -1.5708</pose>
+            <gravity>1</gravity>
+            <self_collide>0</self_collide>
+            <kinematic>0</kinematic>
+            <enable_wind>0</enable_wind>
+            <visual name='visual'>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <material>
+                <lighting>1</lighting>
+                <script>
+                <uri>file://src/robotont_gazebo/media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+                </script>
+                <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+                </shader>
+                <ambient>0.3 0.3 0.3 1</ambient>
+                <diffuse>0.7 0.7 0.7 1</diffuse>
+                <specular>0.01 0.01 0.01 1</specular>
+                <emissive>0 0 0 1</emissive>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+            </visual>
+            <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <surface>
+                <friction>
+                <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                </ode>
+                <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                    <slip>0</slip>
+                    </ode>
+                </torsional>
+                </friction>
+                <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                </bullet>
+                </contact>
+            </surface>
+            </collision>
+        </link>
+        <link name='link_2_clone_1'>
+            <inertial>
+            <mass>1</mass>
+            <inertia>
+                <ixx>0.166667</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.166667</iyy>
+                <iyz>0</iyz>
+                <izz>0.166667</izz>
+            </inertia>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            </inertial>
+            <pose frame=''>0.560972 -6.02944 0 0 0 -1.5708</pose>
+            <gravity>1</gravity>
+            <self_collide>0</self_collide>
+            <kinematic>0</kinematic>
+            <enable_wind>0</enable_wind>
+            <visual name='visual'>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <material>
+                <lighting>1</lighting>
+                <script>
+                <uri>file://src/robotont_gazebo/media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+                </script>
+                <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+                </shader>
+                <ambient>0.3 0.3 0.3 1</ambient>
+                <diffuse>0.7 0.7 0.7 1</diffuse>
+                <specular>0.01 0.01 0.01 1</specular>
+                <emissive>0 0 0 1</emissive>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+            </visual>
+            <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <surface>
+                <friction>
+                <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                </ode>
+                <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                    <slip>0</slip>
+                    </ode>
+                </torsional>
+                </friction>
+                <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                </bullet>
+                </contact>
+            </surface>
+            </collision>
+        </link>
+        <link name='link_2_clone_2'>
+            <inertial>
+            <mass>1</mass>
+            <inertia>
+                <ixx>0.166667</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.166667</iyy>
+                <iyz>0</iyz>
+                <izz>0.166667</izz>
+            </inertia>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            </inertial>
+            <pose frame=''>0.501116 6.04854 0 0 0 -1.5708</pose>
+            <gravity>1</gravity>
+            <self_collide>0</self_collide>
+            <kinematic>0</kinematic>
+            <enable_wind>0</enable_wind>
+            <visual name='visual'>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <material>
+                <lighting>1</lighting>
+                <script>
+                <uri>file://src/robotont_gazebo/media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+                </script>
+                <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+                </shader>
+                <ambient>0.3 0.3 0.3 1</ambient>
+                <diffuse>0.7 0.7 0.7 1</diffuse>
+                <specular>0.01 0.01 0.01 1</specular>
+                <emissive>0 0 0 1</emissive>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+            </visual>
+            <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <surface>
+                <friction>
+                <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                </ode>
+                <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                    <slip>0</slip>
+                    </ode>
+                </torsional>
+                </friction>
+                <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                </bullet>
+                </contact>
+            </surface>
+            </collision>
+        </link>
+        <link name='link_3'>
+            <inertial>
+            <mass>1</mass>
+            <inertia>
+                <ixx>0.166667</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.166667</iyy>
+                <iyz>0</iyz>
+                <izz>0.166667</izz>
+            </inertia>
+            </inertial>
+            <pose frame=''>-0.362126 0.987242 0 0 -0 0</pose>
+            <visual name='visual'>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <material>
+                <lighting>1</lighting>
+                <script>
+                <uri>file://src/robotont_gazebo/media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+                </script>
+                <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+                </shader>
+                <ambient>0.3 0.3 0.3 1</ambient>
+                <diffuse>0.7 0.7 0.7 1</diffuse>
+                <specular>0.01 0.01 0.01 1</specular>
+                <emissive>0 0 0 1</emissive>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+            </visual>
+            <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <surface>
+                <friction>
+                <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                </ode>
+                <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                    <slip>0</slip>
+                    </ode>
+                </torsional>
+                </friction>
+                <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                </bullet>
+                </contact>
+            </surface>
+            </collision>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+        </link>
+        <link name='link_3_clone'>
+            <inertial>
+            <mass>1</mass>
+            <inertia>
+                <ixx>0.166667</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.166667</iyy>
+                <iyz>0</iyz>
+                <izz>0.166667</izz>
+            </inertia>
+            </inertial>
+            <pose frame=''>-0.38347 -1.01218 0 0 -0 0</pose>
+            <visual name='visual'>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <material>
+                <lighting>1</lighting>
+                <script>
+                <uri>file://src/robotont_gazebo/media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+                </script>
+                <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+                </shader>
+                <ambient>0.3 0.3 0.3 1</ambient>
+                <diffuse>0.7 0.7 0.7 1</diffuse>
+                <specular>0.01 0.01 0.01 1</specular>
+                <emissive>0 0 0 1</emissive>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+            </visual>
+            <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                <uri>file://src/robotont_gazebo/meshes/wall.stl</uri>
+                <scale>1 1 1</scale>
+                </mesh>
+            </geometry>
+            <surface>
+                <friction>
+                <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                </ode>
+                <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                    <slip>0</slip>
+                    </ode>
+                </torsional>
+                </friction>
+                <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                </bullet>
+                </contact>
+            </surface>
+            </collision>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose frame=''>2.41371 -0.020344 0 0 -0 0</pose>
+        </model>
+
+       
+
+    </world>
+</sdf>
