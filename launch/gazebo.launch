@@ -3,6 +3,9 @@
     <arg name="world" default="worlds/empty.world" />
     <arg name="x_pos" default="0"/>
     <arg name="model" default="robotont_gazebo_nuc"/>
+    <arg name="ns" default=""/>
+    <arg name="prefix" default="$(arg ns)_"/>
+    <arg name="robot_name" default="robotont"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(arg world)"/>
     </include>
@@ -11,10 +14,21 @@
         <node name="relay" type="relay" pkg="topic_tools" args="/camera/depth/image_rect_raw /camera/aligned_depth_to_color/image_raw" />
     </group>
     <!-- Convert an xacro and put on parameter server -->
-    <param name="/robotont/robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/$(arg model).urdf.xacro"/>
-    <!-- State publishers -->
-    <node ns="robotont" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-    <node ns="robotont" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
-    <!-- Spawn a robot into Gazebo -->
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param /robotont/robot_description -urdf -x -$(arg x_pos) -model robotont" />  
+    <param if="$(eval prefix == '_')" name="robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/$(arg model).urdf.xacro"/>
+    <param unless="$(eval prefix == '_')" name="robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/$(arg model).urdf.xacro prefix:=$(arg prefix)"/>
+
+    <group if="$(eval prefix == '_')">
+        <include file="$(find robotont_gazebo)/launch/upload.launch" >
+            <arg name="init_pose" value="-x 0 -y 0 -z 0" />
+            <arg name="robot_name"  value="robotont" />
+        </include>
+    </group>
+    <group unless="$(eval prefix == '_')" ns="$(arg ns)">
+        <include file="$(find robotont_gazebo)/launch/upload.launch" >
+            <arg name="init_pose" value="-x 0 -y 0 -z 0" />
+            <arg name="robot_name"  value="robotont" />
+        </include>
+    </group>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
 </launch>   

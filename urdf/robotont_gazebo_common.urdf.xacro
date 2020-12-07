@@ -1,5 +1,4 @@
 <?xml version="1.0"?>    
-
 <robot xmlns:xacro="http://ros.org/wiki/xacro">   
     <xacro:include filename="$(find robotont_gazebo)/urdf/gazebo_rim.urdf.xacro"/>
     <xacro:gazebo_rim_macro
@@ -16,8 +15,8 @@
     />
     <gazebo>
         <plugin name="robotont_controller" filename="libgazebo_ros_planar_move.so">
-            <commandTopic>/robotont/cmd_vel</commandTopic>
-            <odometryTopic>/robotont/odom</odometryTopic>
+            <commandTopic>/cmd_vel</commandTopic>
+            <odometryTopic>/odom</odometryTopic>
             <odometryFrame>odom</odometryFrame>
             <odometryRate>30.0</odometryRate>
             <robotBaseFrame>${prefix}base_footprint</robotBaseFrame>
