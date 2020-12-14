@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="__ns" default=""/>
+  <arg name="prefix" default="$(arg __ns)_"/>
+  <arg name="model" default="robotont_gazebo_nuc"/>
+
+  <param if="$(eval prefix == '_')" name="robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/$(arg model).urdf.xacro"/>
+  <param unless="$(eval prefix == '_')" name="robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/$(arg model).urdf.xacro prefix:=$(arg prefix) __ns:=$(arg __ns)"/>
+
+</launch>

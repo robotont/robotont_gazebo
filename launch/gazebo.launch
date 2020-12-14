@@ -1,34 +1,30 @@
 <?xml version="1.0" ?>
 <launch>
+    <arg name="ns" default=""/>
     <arg name="world" default="worlds/empty.world" />
     <arg name="x_pos" default="0"/>
     <arg name="model" default="robotont_gazebo_nuc"/>
-    <arg name="ns" default=""/>
     <arg name="prefix" default="$(arg ns)_"/>
     <arg name="robot_name" default="robotont"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(arg world)"/>
     </include>
     <!-- topic for 3d_mapping -->
-    <group unless="$(eval arg('model') == 'robotont_gazebo_lidar')">
+    <group if="$(eval arg('model') == 'robotont_gazebo_nuc')">
         <node name="relay" type="relay" pkg="topic_tools" args="/camera/depth/image_rect_raw /camera/aligned_depth_to_color/image_raw" />
-    </group>
-    <!-- Convert an xacro and put on parameter server -->
-    <param if="$(eval prefix == '_')" name="robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/$(arg model).urdf.xacro"/>
-    <param unless="$(eval prefix == '_')" name="robot_description" command="$(find xacro)/xacro $(find robotont_gazebo)/urdf/$(arg model).urdf.xacro prefix:=$(arg prefix)"/>
+        <node name="throttle_color" pkg="topic_tools" type="throttle"
+        args="messages /camera/color/image_raw 1.0 /camera/color/image_raw_throttled" />
+        <node name="throttle_depth" pkg="topic_tools" type="throttle"
+        args="messages /camera/depth/image_rect_raw 1.0 /camera/aligned_depth_to_color/image_raw_throttled" />
+    </group>-->
+    <include file="$(find robotont_gazebo)/launch/upload_description.launch">
+        <arg name="__ns" value="$(arg ns)"/>
+        <arg name="model" default="$(arg model)"/>
+    </include>
 
-    <group if="$(eval prefix == '_')">
-        <include file="$(find robotont_gazebo)/launch/upload.launch" >
-            <arg name="init_pose" value="-x 0 -y 0 -z 0" />
-            <arg name="robot_name"  value="robotont" />
-        </include>
-    </group>
-    <group unless="$(eval prefix == '_')" ns="$(arg ns)">
-        <include file="$(find robotont_gazebo)/launch/upload.launch" >
-            <arg name="init_pose" value="-x 0 -y 0 -z 0" />
-            <arg name="robot_name"  value="robotont" />
-        </include>
-    </group>
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <include file="$(find robotont_gazebo)/launch/spawn_urdf.launch" >
+        <arg name="x_pos" value="$(arg x_pos)" />
+    </include>
 
 </launch>   
+
