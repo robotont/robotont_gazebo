@@ -26,7 +26,7 @@
         <technique sid="common">
           <lambert>
             <emission>
-              <color sid="emission">0 0 0 1</color>
+              <texture texture="uv_layout_material_png-sampler" texcoord="UVMap"/>
             </emission>
             <diffuse>
               <texture texture="uv_layout_material_png-sampler" texcoord="UVMap"/>

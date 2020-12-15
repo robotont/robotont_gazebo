@@ -144,7 +144,7 @@
                     <geometry>
                         <mesh>
                             <scale>0.001 0.001 0.001</scale>
-                            <uri> file://src/robotont_gazebo/meshes/minimaze.stl
+                            <uri> file://src/robotont_gazebo/meshes/minimaze1.stl
                             </uri>
                         </mesh>
                     </geometry>
