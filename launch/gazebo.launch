@@ -11,12 +11,12 @@
     </include>
     <!-- topic for 3d_mapping -->
     <group if="$(eval arg('model') == 'robotont_gazebo_nuc')">
-        <node name="relay" type="relay" pkg="topic_tools" args="/camera/depth/image_rect_raw /camera/aligned_depth_to_color/image_raw" />
+        <node name="relay" type="relay" pkg="topic_tools" args="$(arg ns)/camera/depth/image_rect_raw $(arg ns)/camera/aligned_depth_to_color/image_raw" />
         <node name="throttle_color" pkg="topic_tools" type="throttle"
-        args="messages /camera/color/image_raw 1.0 /camera/color/image_raw_throttled" />
+        args="messages $(arg ns)/camera/color/image_raw 1.0 $(arg ns)/camera/color/image_raw_throttled" />
         <node name="throttle_depth" pkg="topic_tools" type="throttle"
-        args="messages /camera/depth/image_rect_raw 1.0 /camera/aligned_depth_to_color/image_raw_throttled" />
-    </group>-->
+        args="messages $(arg ns)/camera/depth/image_rect_raw 1.0 $(arg ns)/camera/aligned_depth_to_color/image_raw_throttled" />
+    </group>
     <include file="$(find robotont_gazebo)/launch/upload_description.launch">
         <arg name="__ns" value="$(arg ns)"/>
         <arg name="model" default="$(arg model)"/>
