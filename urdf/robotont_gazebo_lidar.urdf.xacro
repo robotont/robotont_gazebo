@@ -29,14 +29,14 @@
         <origin xyz="-0.01 0 0.085" rpy="0 0 0"/>
     </joint>
     <!-- Hokuyo Laser -->
-    <joint name="{prefix}hokuyo_joint" type="fixed">
+    <joint name="${prefix}hokuyo_joint" type="fixed">
         <axis xyz="0 1 0" />
         <origin xyz="0 0 0.05" rpy="0 0 0"/>
         <parent link="${prefix}computer_link"/>
-        <child link="hokuyo_link"/>
+        <child link="${prefix}hokuyo_link"/>
     </joint>
 
-    <link name="{prefix}hokuyo_link">
+    <link name="${prefix}hokuyo_link">
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
@@ -93,8 +93,8 @@
                 </noise>
             </ray>
             <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-                <topicName>{__ns}/scan</topicName>
-                <frameName>{prefix}hokuyo_link</frameName>
+                <topicName>${__ns}/scan</topicName>
+                <frameName>${prefix}hokuyo_link</frameName>
             </plugin>
         </sensor>
     </gazebo>
