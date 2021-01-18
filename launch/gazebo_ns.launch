@@ -11,20 +11,14 @@
     </include>
     <include file="$(find robotont_gazebo)/launch/upload_description.launch">
         <arg name="__ns" value="$(arg ns)"/>
+        <arg name="model" default="$(arg model)"/>
     </include>
     <!-- topic for 3d_mapping -->
     <node if="$(eval prefix == '_')" name="relay" type="relay" pkg="topic_tools" args="/camera/depth/image_rect_raw /camera/aligned_depth_to_color/image_raw" />
     <node unless="$(eval prefix == '_')" name="relay" type="relay" pkg="topic_tools" args="$(arg ns)/camera/depth/image_rect_raw $(arg ns)/camera/aligned_depth_to_color/image_raw" />
 
-    <group>
-        <include file="$(find robotont_gazebo)/launch/spawn_urdf.launch" >
-            <arg name="x_pos" value="$(arg x_pos)" />
-        </include>
-    </group>
-    <group unless="$(eval prefix == '_')" ns="$(arg ns)">
-        <include file="$(find robotont_gazebo)/launch/spawn_urdf.launch" >
-            <arg name="x_pos" value="$(arg x_pos)" />
-        </include>
-    </group>
+    <include file="$(find robotont_gazebo)/launch/spawn_urdf.launch" >
+        <arg name="x_pos" value="$(arg x_pos)" />
+    </include>
 </launch>   
 
