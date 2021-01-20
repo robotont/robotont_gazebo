@@ -311,7 +311,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://media/materials/scripts/ArTag4.material</uri>
+              <uri>file://meshes/ar1.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2017,7 +2017,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://media/materials/scripts/ArTag2.material</uri>
+              <uri>file://meshes/ar1.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2122,7 +2122,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://media/materials/scripts/ArTag1.material</uri>
+              <uri>file://meshes/ar1.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2227,7 +2227,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://media/materials/scripts/ArTag5.material</uri>
+              <uri>file://meshes/ar1.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -2332,7 +2332,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://media/materials/scripts/ArTag3.material</uri>
+              <uri>file://meshes/ar1.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>

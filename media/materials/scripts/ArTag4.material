@@ -7,7 +7,7 @@ material RoboTont/ArTag4
       texture_unit
       {
         // Relative to the location of the material script
-        texture ar_tag4.png 
+        texture ../textures/ar_tag4.png 
         // Repeat the texture over the surface (4 per face)
         scale 1 1
       }

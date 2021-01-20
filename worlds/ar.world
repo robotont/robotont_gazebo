@@ -135,7 +135,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://media/materials/scripts/ArTag1.material</uri>
+              <uri>file://meshes/ar1.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>

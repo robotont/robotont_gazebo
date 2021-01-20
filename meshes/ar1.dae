@@ -10,11 +10,6 @@
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
-  <library_images>
-    <image id="MarkerData_1_png" name="MarkerData_1_png">
-      <init_from>MarkerData_1.png</init_from>
-    </image>
-  </library_images>
   <library_effects>
     <effect id="Material_001-effect">
       <profile_COMMON>
