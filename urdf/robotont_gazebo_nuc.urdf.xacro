@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="robotont">
-    <xacro:arg name="__ns" default=""/>
-    <xacro:property name= "__ns" value="$(arg __ns)"/>  
     <xacro:arg name= "simulated" default="true" />
     <xacro:include filename="$(find robotont_nuc_description)/urdf/robotont_realsense.urdf.xacro"/>
 	<xacro:include filename="$(find robotont_gazebo)/urdf/robotont_gazebo_common.urdf.xacro" />
@@ -35,7 +33,7 @@
                 </clip>
             </camera>
             <plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
-                <cameraName>${__ns}/camera</cameraName>
+                <cameraName>camera</cameraName>
                 <alwaysOn>true</alwaysOn>
                 <updateRate>0.0</updateRate>
                 <imageTopicName>color/image_raw</imageTopicName>

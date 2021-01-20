@@ -15,8 +15,8 @@
     />
     <gazebo>
         <plugin name="robotont_controller" filename="libgazebo_ros_planar_move.so">
-            <commandTopic>${__ns}/cmd_vel</commandTopic>
-            <odometryTopic>${__ns}/odom</odometryTopic>
+            <commandTopic>cmd_vel</commandTopic>
+            <odometryTopic>odom</odometryTopic>
             <odometryFrame>${prefix}odom</odometryFrame>
             <odometryRate>30.0</odometryRate>
             <robotBaseFrame>${prefix}base_footprint</robotBaseFrame>

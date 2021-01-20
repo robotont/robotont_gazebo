@@ -4,7 +4,6 @@
     <arg name="world" default="worlds/empty.world" />
     <arg name="x_pos" default="0"/>
     <arg name="model" default="robotont_gazebo_nuc"/>
-    <arg name="prefix" default="$(arg __ns)_"/>
     <arg name="robot_name" default="robotont"/>
     <arg name="cam_fps" default="5"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -14,14 +13,8 @@
         <arg name="__ns" value="$(arg __ns)"/>
         <arg name="model" default="$(arg model)"/>
     </include>
-    <!-- topic for 3d_mapping 
+    <!-- topic for 3d_mapping -->
     <node name="relay" type="relay" pkg="topic_tools" args="camera/depth/image_rect_raw camera/aligned_depth_to_color/image_raw" />
-    <node pkg="topic_tools" name="d435_throttle_node" type="throttle" args="messages camera/aligned_depth_to_color/image_raw $(arg cam_fps) /camera/aligned_depth_to_color/image_raw_throttled" output="screen" />
-    <node pkg="topic_tools" name="d435_throttle_node_compressedDepth" type="throttle" args="messages camera/aligned_depth_to_color/image_raw/compressedDepth $(arg cam_fps) /camera/aligned_depth_to_color/image_raw_throttled/compressedDepth" output="screen" />
-
-    <node pkg="topic_tools" name="d435_throttle_color_node" type="throttle" args="messages camera/color/image_raw $(arg cam_fps) /camera/color/image_raw_throttled" output="screen" />
-    <node pkg="topic_tools" name="d435_throttle_color_node_compressed" type="throttle" args="messages camera/color/image_raw/compressed $(arg cam_fps) /camera/color/image_raw_throttled/compressed" output="screen" />
-    -->
 
     <include file="$(find robotont_gazebo)/launch/spawn_urdf.launch" >
         <arg name="x_pos" value="$(arg x_pos)" />
