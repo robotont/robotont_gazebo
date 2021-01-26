@@ -8,7 +8,6 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   joy
   nav_msgs
-  cmake_modules
   tf
 )
 
