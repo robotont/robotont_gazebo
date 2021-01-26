@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="robotont">
     <xacro:arg name= "simulated" default="true" />
     <xacro:include filename="$(find robotont_nuc_description)/urdf/robotont_realsense.urdf.xacro"/>
-	<xacro:include filename="$(find robotont_gazebo)/urdf/robotont_gazebo_common.urdf.xacro" />
+    <xacro:include filename="$(find robotont_gazebo)/urdf/robotont_gazebo_common.urdf.xacro" />
     <gazebo reference="${prefix}computer_link">
         <material>Gazebo/Black</material>
     </gazebo>            
