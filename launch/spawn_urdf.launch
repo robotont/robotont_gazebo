@@ -1,6 +1,5 @@
 <?xml version="1.0" ?>
 <launch>
-    <arg name="init_pose"/>
     <arg name="x_pos" default="0"/>
 
     <!-- The spawn_urdf node in gazebo_ros package defaults to '/gazebo' namespace, which is absolute. We override the param with a relative value to automatically propagate robotont namespaces. -->
@@ -10,3 +9,4 @@
         <!-- The odometry estimator, throttling, fake laser etc. go here -->
         <!-- All the stuff as from usual robot launch file -->
 </launch> 
+

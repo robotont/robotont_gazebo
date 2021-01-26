@@ -1,6 +1,5 @@
 <?xml version="1.0" ?>
 <launch>
-    <arg name="__ns" default=""/>
     <arg name="world" default="worlds/minimaze.world"/>
     <arg name="x_pos" default="2"/>
     <arg name="model" default="robotont_gazebo_nuc"/>
@@ -8,6 +7,6 @@
         <arg name="world" value="$(arg world)"/>
         <arg name="x_pos" value="$(arg x_pos)"/>
         <arg name="model" default="$(arg model)"/>
-        <arg name="__ns" default="$(arg __ns)"/>
     </include>
 </launch>
+
