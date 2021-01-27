@@ -12,7 +12,7 @@
         <arg name="model" default="$(arg model)"/>
     </include>
     <!-- topic for 3d_mapping -->
-    <node name="relay" type="relay" pkg="topic_tools" args="camera/depth/image_rect_raw camera/aligned_depth_to_color/image_raw" />
+    <node if="$(eval model == 'robotont_gazebo_nuc')" name="relay" type="relay" pkg="topic_tools" args="camera/depth/image_rect_raw camera/aligned_depth_to_color/image_raw" />
 
     <include file="$(find robotont_gazebo)/launch/spawn_urdf.launch" >
         <arg name="x_pos" value="$(arg x_pos)" />
