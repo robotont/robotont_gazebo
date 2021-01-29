@@ -41,7 +41,7 @@
   </library_effects>
   <library_images>
     <image id="uv_layout_materials3_png" name="uv_layout_materials3_png">
-      <init_from>/home/m/Downloads/uv_layout_materials3.png</init_from>
+      <init_from>../media/materials/textures/uv_layout_materials.png</init_from>
     </image>
   </library_images>
   <library_materials>
