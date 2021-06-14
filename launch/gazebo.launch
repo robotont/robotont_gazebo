@@ -5,6 +5,9 @@
     <arg name="model" default="robotont_gazebo_nuc"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(arg world)"/>
+        <arg name="debug" value="true" />
+        <arg name="verbose" value="true" />
+        <arg name="output" value="screen" />
     </include>
     <!-- topic for 3d_mapping -->
     <group unless="$(eval arg('model') == 'robotont_gazebo_lidar')">

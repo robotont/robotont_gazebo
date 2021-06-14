@@ -1,0 +1,86 @@
+vertex_program bricks_vp_glsl glsl
+{
+  source bricks_vp.glsl
+}
+
+fragment_program bricks_fp_glsl glsl
+{
+  source bricks_fp.glsl
+	default_params
+	{
+		// assign samplers as required by GLSL
+		param_named normalMap int 0
+	}
+}
+
+material Robotont/bricks
+{
+  technique
+  {
+		//pass ambient
+		//{
+    //  ambient 0.1 0.1 0.1
+    //  diffuse 0 0 0 
+		//	specular 0 0 0 0
+    //
+    //  // Base diffuse texture map
+    //  texture_unit DiffuseMap
+    //  {
+    //    texture ../textures/bricks_diff.tga
+    //    filtering trilinear
+    //    //tex_coord_set 1
+    //    //scale 1 1
+    //  }
+		//}
+
+    pass perlight
+    {
+      ambient 0 0 0
+      diffuse 0.3 0.3 0.3
+      specular 0.7 0.7 0.7 128
+
+      //iteration once_per_light
+      //scene_blend add
+
+			// Vertex program reference
+      vertex_program_ref bricks_vp_glsl
+      {
+				param_named_auto lightPosition light_position_object_space 0
+				param_named_auto eyePosition camera_position_object_space
+				param_named_auto worldViewProj worldviewproj_matrix
+      }
+ 
+			// Fragment program reference
+      fragment_program_ref bricks_fp_glsl 
+      {
+				param_named_auto lightDiffuse light_diffuse_colour 0 
+        param_named_auto lightSpecular light_specular_colour 0
+      }
+ 
+      texture_unit DiffuseMap
+      {
+        texture ../textures/bricks_diff.tga
+        //filtering trilinear
+        //tex_coord_set 0
+      }
+ 
+      // Normal map
+      texture_unit NormalMap
+      {
+        texture ../textures/bricks_nor.tga
+        //filtering trilinear
+        //tex_coord_set 1
+      }
+ 
+      // spec map for shininess
+      //texture_unit SpecMap
+      //{
+      //  texture ../textures/bricks_spec.tga
+      //  filtering trilinear
+      //  //tex_coord_set 2
+      //}
+ 
+    }
+  }
+}
+
