@@ -86,65 +86,65 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='default'>
-      <sim_time>135 660000000</sim_time>
-      <real_time>0 0</real_time>
-      <wall_time>1606913816 898010566</wall_time>
-      <iterations>0</iterations>
-      <model name='ar'>
-        <pose frame=''>2.94 -2 0.2 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link_0'>
-          <pose frame=''>2.94 -2 0.2 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='ar_clone'>
-        <pose frame=''>0.94 2 0.2 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link_0'>
-          <pose frame=''>0.94 2 0.2 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='ar_clone_0'>
-        <pose frame=''>-2 2.9 0.2 0 -0 1.570796</pose>
-        <scale>1 1 1</scale>
-        <link name='link_0'>
-          <pose frame=''>-2 2.9 0.2 0 -0 1.570796</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='ar_clone_0_clone'>
-        <pose frame=''>2 2.9 0.2 0 -0 1.570796</pose>
-        <scale>1 1 1</scale>
-        <link name='link_0'>
-          <pose frame=''>2 2.9 0.2 0 -0 1.570796</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='ar_clone_0_clone_0'>
-        <pose frame=''>0 -2.89 0.2 0 -0 1.570796</pose>
-        <scale>1 1 1</scale>
-        <link name='link_0'>
-          <pose frame=''>0 -2.89 0.2 0 -0 1.570796</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
+      <sim_time>215 895000000</sim_time>
+      <real_time>80 430299412</real_time>
+      <wall_time>1615997678 902123638</wall_time>
+      <iterations>80235</iterations>
       <model name='ground_plane'>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
           <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='marker1'>
+        <pose frame=''>-2 2.9 0.05 0 -0 1.57</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-2 2.9 0.05 0 -0 1.57</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='marker2'>
+        <pose frame=''>0.94 2 0.05 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0.94 2 0.05 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='marker3'>
+        <pose frame=''>0 -2.89 0.05 0 0 -1.57</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 -2.89 0.05 0 0 -1.57</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='marker4'>
+        <pose frame=''>2.94 -2 0.05 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2.94 -2 0.05 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='marker5'>
+        <pose frame=''>2 2.9 0.05 0 -0 1.57</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2 2.9 0.05 0 -0 1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -256,116 +256,11 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose frame=''>-0.884867 -0.287539 3.11906 0 1.05574 0.212621</pose>
+        <pose frame=''>-8.01655 -0.349068 2.9897 0 0.09574 0.032621</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
     </gui>
-    <model name='ar'>
-      <link name='link_0'>
-        <inertial>
-          <mass>1</mass>
-          <inertia>
-            <ixx>0.166667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.166667</iyy>
-            <iyz>0</iyz>
-            <izz>0.166667</izz>
-          </inertia>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-        </inertial>
-        <pose frame=''>0 0 0 0 -0 0</pose>
-        <gravity>1</gravity>
-        <self_collide>0</self_collide>
-        <kinematic>0</kinematic>
-        <enable_wind>0</enable_wind>
-        <visual name='visual'>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>file://meshes/ar1.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-          <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/ArTag4.material</uri>
-              <name>RoboTont/ArTag4</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0.5 0.5 0.5 1</emissive>
-          </material>
-          <transparency>0</transparency>
-          <cast_shadows>1</cast_shadows>
-        </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>file://meshes/ar1.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
-              </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
-            </friction>
-            <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
-            </bounce>
-            <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
-              <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
-              </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
-            </contact>
-          </surface>
-        </collision>
-      </link>
-      <static>1</static>
-      <allow_auto_disable>1</allow_auto_disable>
-      <pose frame=''>-1 0 0.2 0 -0 0</pose>
-    </model>
     <model name='minimaze'>
       <link name='link_0'>
         <inertial>
@@ -1967,425 +1862,90 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose frame=''>0.003275 0.924993 0.250007 3.8e-05 1e-05 0</pose>
     </model>
-    <model name='ar_clone'>
-      <link name='link_0'>
-        <inertial>
-          <mass>1</mass>
-          <inertia>
-            <ixx>0.166667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.166667</iyy>
-            <iyz>0</iyz>
-            <izz>0.166667</izz>
-          </inertia>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-        </inertial>
-        <pose frame=''>0 0 0 0 -0 0</pose>
-        <gravity>1</gravity>
-        <self_collide>0</self_collide>
-        <kinematic>0</kinematic>
-        <enable_wind>0</enable_wind>
-        <visual name='visual'>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>file://meshes/ar1.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-          <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/ArTag2.material</uri>
-              <name>RoboTont/ArTag2</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0.5 0.5 0.5 1</emissive>
-          </material>
-          <transparency>0</transparency>
-          <cast_shadows>1</cast_shadows>
-        </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>file://meshes/ar1.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
-              </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
-            </friction>
-            <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
-            </bounce>
-            <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
-              <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
-              </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
-            </contact>
-          </surface>
-        </collision>
-      </link>
+    <model name='marker2'>
       <static>1</static>
-      <allow_auto_disable>1</allow_auto_disable>
-      <pose frame=''>0.935654 1.98424 0.2 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://marker2/meshes/Marker2.dae</uri>
+              <scale>0.8 0.8 0.8</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.94 2 0.05 0 -0 0</pose>
     </model>
-    <model name='ar_clone_0'>
-      <link name='link_0'>
-        <inertial>
-          <mass>1</mass>
-          <inertia>
-            <ixx>0.166667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.166667</iyy>
-            <iyz>0</iyz>
-            <izz>0.166667</izz>
-          </inertia>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-        </inertial>
-        <pose frame=''>0 0 0 0 -0 0</pose>
-        <gravity>1</gravity>
-        <self_collide>0</self_collide>
-        <kinematic>0</kinematic>
-        <enable_wind>0</enable_wind>
-        <visual name='visual'>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>file://meshes/ar1.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-          <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/ArTag1.material</uri>
-              <name>RoboTont/ArTag1</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0.5 0.5 0.5 1</emissive>
-          </material>
-          <transparency>0</transparency>
-          <cast_shadows>1</cast_shadows>
-        </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>file://meshes/ar1.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
-              </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
-            </friction>
-            <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
-            </bounce>
-            <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
-              <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
-              </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
-            </contact>
-          </surface>
-        </collision>
-      </link>
+    <model name='marker1'>
       <static>1</static>
-      <allow_auto_disable>1</allow_auto_disable>
-      <pose frame=''>-0.133607 2.03426 0.2 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://marker1/meshes/Marker1.dae</uri>
+              <scale>0.8 0.8 0.8</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-2 2.9 0.05 0 -0 1.57</pose>
     </model>
-    <model name='ar_clone_0_clone'>
-      <link name='link_0'>
-        <inertial>
-          <mass>1</mass>
-          <inertia>
-            <ixx>0.166667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.166667</iyy>
-            <iyz>0</iyz>
-            <izz>0.166667</izz>
-          </inertia>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-        </inertial>
-        <pose frame=''>0 0 0 0 -0 0</pose>
-        <gravity>1</gravity>
-        <self_collide>0</self_collide>
-        <kinematic>0</kinematic>
-        <enable_wind>0</enable_wind>
-        <visual name='visual'>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>file://meshes/ar1.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-          <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/ArTag5.material</uri>
-              <name>RoboTont/ArTag5</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0.5 0.5 0.5 1</emissive>
-          </material>
-          <transparency>0</transparency>
-          <cast_shadows>1</cast_shadows>
-        </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>file://meshes/ar1.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
-              </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
-            </friction>
-            <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
-            </bounce>
-            <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
-              <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
-              </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
-            </contact>
-          </surface>
-        </collision>
-      </link>
+    <model name='marker5'>
       <static>1</static>
-      <allow_auto_disable>1</allow_auto_disable>
-      <pose frame=''>1.99772 2.90457 0.2 0 -0 1.53136</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://marker5/meshes/Marker5.dae</uri>
+              <scale>0.8 0.8 0.8</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>2 2.9 0.05 0 -0 1.57</pose>
     </model>
-    <model name='ar_clone_0_clone_0'>
-      <link name='link_0'>
-        <inertial>
-          <mass>1</mass>
-          <inertia>
-            <ixx>0.166667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.166667</iyy>
-            <iyz>0</iyz>
-            <izz>0.166667</izz>
-          </inertia>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-        </inertial>
-        <pose frame=''>0 0 0 0 -0 0</pose>
-        <gravity>1</gravity>
-        <self_collide>0</self_collide>
-        <kinematic>0</kinematic>
-        <enable_wind>0</enable_wind>
-        <visual name='visual'>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>file://meshes/ar1.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-          <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/ArTag3.material</uri>
-              <name>RoboTont/ArTag3</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0.5 0.5 0.5 1</emissive>
-          </material>
-          <transparency>0</transparency>
-          <cast_shadows>1</cast_shadows>
-        </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>file://meshes/ar1.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
-              </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
-            </friction>
-            <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
-            </bounce>
-            <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
-              <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
-              </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
-            </contact>
-          </surface>
-        </collision>
-      </link>
+    <model name='marker4'>
       <static>1</static>
-      <allow_auto_disable>1</allow_auto_disable>
-      <pose frame=''>0.000429 -2.88502 0.2 0 -0 1.53136</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://marker4/meshes/Marker4.dae</uri>
+              <scale>0.8 0.8 0.8</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>2.94 -2 0.05 0 -0 0</pose>
+    </model>
+    <model name='marker3'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://marker3/meshes/Marker3.dae</uri>
+              <scale>0.8 0.8 0.8</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0 -2.89 0.05 0 0 -1.57</pose>
     </model>
   </world>
 </sdf>
