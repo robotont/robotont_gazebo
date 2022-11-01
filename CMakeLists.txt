@@ -6,7 +6,6 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  joy
   nav_msgs
   tf
 )
@@ -14,7 +13,6 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   CATKIN_DEPENDS
     std_msgs
-    joy
     nav_msgs
     tf
 )
