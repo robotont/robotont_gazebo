@@ -1,6 +1,14 @@
 - git:
     local-name: robotont/robotont_description
     uri: https://github.com/robotont/robotont_description.git
+    version: jazzy-devel
+
 - git:
     local-name: robotont/robotont_nuc_description
     uri: https://github.com/robotont/robotont_nuc_description.git
+    version: jazzy-devel
+
+-git:
+    local-name: gz_planar_move
+    uri: https://github.com/sygism/gz_planar_move.git
+    version: jazzy

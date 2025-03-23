@@ -1,29 +1,41 @@
-<?xml version="1.0"?>    
+<?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:include filename="$(find robotont_gazebo)/urdf/gazebo_rim.urdf.xacro"/>
+    <xacro:property name="back_joint" value="rim_back_joint"/>
+    <xacro:property name="left_joint" value="rim_left_joint"/>
+    <xacro:property name="right_joint" value="rim_right_joint"/>
+    <xacro:property name="ns" value="robotont"/>
+    <xacro:property name="wheel_radius" value="0.062"/>
+    <xacro:property name="wheel_distance" value="0.14"/>
+    <xacro:property name="velocity_cmd_topic" value="/cmd_vel"/>
+    <xacro:property name="prefix" value=""/>
+
     <xacro:gazebo_rim_macro
-        name="back"
-        prefix="${prefix}"
+            name="back"
+            prefix="${prefix}"
     />
     <xacro:gazebo_rim_macro
-        name="right"
-        prefix="${prefix}"
+            name="right"
+            prefix="${prefix}"
     />
     <xacro:gazebo_rim_macro
-        name="left"
-        prefix="${prefix}"
+            name="left"
+            prefix="${prefix}"
     />
+
     <gazebo>
-        <plugin name="robotont_controller" filename="libgazebo_ros_planar_move.so">
-            <commandTopic>cmd_vel</commandTopic>
-            <odometryTopic>odom</odometryTopic>
-            <odometryFrame>${prefix}odom</odometryFrame>
-            <odometryRate>30.0</odometryRate>
-            <robotBaseFrame>${prefix}base_footprint</robotBaseFrame>
+        <static>false</static>
+        <selfCollide>false</selfCollide>
+        <allow_auto_disable>true</allow_auto_disable>
+
+        <plugin name="gz_planar_move::PlanarMove" filename="$(find gz_planar_move)/lib/libgz_planar_move.so">
+            <ns>${ns}</ns>
+            <back_joint>${back_joint}</back_joint>
+            <left_joint>${left_joint}</left_joint>
+            <right_joint>${right_joint}</right_joint>
+            <wheel_distance>${wheel_distance}</wheel_distance>
+            <wheel_radius>${wheel_radius}</wheel_radius>
+            <velocity_cmd_topic>${velocity_cmd_topic}</velocity_cmd_topic>
         </plugin>
-    </gazebo>
-    <!-- Give materials to links -->
-    <gazebo reference="${prefix}base_link">
-        <material>Gazebo/GreyTransparent </material>
     </gazebo>
 </robot>

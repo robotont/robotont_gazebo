@@ -50,10 +50,10 @@
             </plane>
           </geometry>
           <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 1</emissive>
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -108,22 +108,14 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
           <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
             <emissive>0 0 0 1</emissive>
           </material>
           <transparency>0</transparency>
@@ -135,7 +127,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -208,22 +200,14 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
           <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
             <emissive>0 0 0 1</emissive>
           </material>
           <transparency>0</transparency>
@@ -235,7 +219,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -308,22 +292,14 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
           <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
             <emissive>0 0 0 1</emissive>
           </material>
           <transparency>0</transparency>
@@ -335,7 +311,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -408,22 +384,14 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
           <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
             <emissive>0 0 0 1</emissive>
           </material>
           <transparency>0</transparency>
@@ -435,7 +403,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -508,22 +476,14 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
           <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
             <emissive>0 0 0 1</emissive>
           </material>
           <transparency>0</transparency>
@@ -535,7 +495,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -608,17 +568,9 @@
             </mesh>
           </geometry>
           <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
             <emissive>0 0 0 1</emissive>
           </material>
           <transparency>0</transparency>
@@ -701,22 +653,14 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
           <material>
-            <lighting>1</lighting>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
             <emissive>0 0 0 1</emissive>
           </material>
           <transparency>0</transparency>
@@ -728,7 +672,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>file://meshes/wall.stl</uri>
+              <uri>meshes/wall.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>

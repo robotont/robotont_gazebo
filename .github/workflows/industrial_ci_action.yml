@@ -1,0 +1,18 @@
+name: build
+
+on: [ push, pull_request, workflow_dispatch ]
+
+jobs:
+  build:
+    env:
+      ROS_REPO: ros
+      UPSTREAM_WORKSPACE: ".ci.rosinstall"
+    strategy:
+      matrix:
+        env:
+          - {ROS_DISTRO: jazzy, ROS_REPO: main}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: 'ros-industrial/industrial_ci@master'
+        env: ${{ matrix.env }}

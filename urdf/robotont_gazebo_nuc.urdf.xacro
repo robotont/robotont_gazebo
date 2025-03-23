@@ -1,55 +1,64 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="robotont">
-    <xacro:arg name= "simulated" default="true" />
-    <xacro:include filename="$(find robotont_nuc_description)/urdf/robotont_realsense.urdf.xacro"/>
-    <xacro:include filename="$(find robotont_gazebo)/urdf/robotont_gazebo_common.urdf.xacro" />
-    <gazebo reference="${prefix}computer_link">
-        <material>Gazebo/Black</material>
-    </gazebo>            
-    <gazebo reference="${prefix}camera_link">
-        <material>Gazebo/Grey</material>
+    <xacro:arg name="simulated" default="true"/>
+    <xacro:arg name="prefix" default=""/>
+    <xacro:arg name="generation" default="3"/>
+    <xacro:property name="generation" value="$(arg generation)"/>
+
+    <xacro:include filename="$(find robotont_gazebo)/urdf/robotont_gazebo_common.urdf.xacro"/>
+
+    <xacro:if value="${str(generation) == '3'}">
+        <xacro:include filename="$(find robotont_nuc_description)/urdf/gen3/robotont_realsense.urdf.xacro"/>
+    </xacro:if>
+    <xacro:if value="${str(generation) == '2.1'}">
+        <xacro:include filename="$(find robotont_nuc_description)/urdf/gen2_1/robotont_realsense.urdf.xacro"/>
+    </xacro:if>
+
+    <gazebo reference="camera_link">
+        <sensor name="rs_d435i" type="rgbd_camera">
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <camera name="rs_d435i">
+          <horizontal_fov>1.50098</horizontal_fov>
+          <lens>
+            <intrinsics>
+              <fx>343.159</fx>
+              <fy>343.159</fy>
+              <cx>319.5</cx>
+              <cy>179.5</cy>
+              <s>0</s>
+            </intrinsics>
+          </lens>
+          <distortion>
+            <k1>0.0</k1>
+            <k2>0.0</k2>
+            <k3>0.0</k3>
+            <p1>0.0</p1>
+            <p2>0.0</p2>
+            <center>0.5 0.5</center>
+          </distortion>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.01</near>
+            <far>300</far>
+          </clip>
+          <depth_camera>
+            <clip>
+              <near>0.1</near>
+              <far>10</far>
+            </clip>
+          </depth_camera>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <plugin name="gz::sim::v8::systems::Sensors" filename="gz-sim8-sensors-system"/>
+      </sensor>
     </gazebo>
-    <gazebo reference="${prefix}camera_assembly_link1">
-        <material>Gazebo/Grey</material>
-    </gazebo>
-    <gazebo reference="${prefix}camera_assembly_link2">
-        <material>Gazebo/GreyTransparent</material>
-    </gazebo>    
-    <!-- Depth camera plugin -->
-    <gazebo reference="${prefix}camera_link">
-        <sensor type="depth" name="camera">
-            <always_on>true</always_on>
-            <update_rate>30.0</update_rate>
-            <camera>
-                <horizontal_fov>${90.0*pi/180.0}</horizontal_fov>
-                <image>
-                    <format>B8G8R8</format>
-                    <width>1280</width>
-                    <height>720</height>
-                </image>
-                <clip>
-                    <near>0.02</near>
-                    <far>8.0</far>
-                </clip>
-            </camera>
-            <plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
-                <cameraName>camera</cameraName>
-                <alwaysOn>true</alwaysOn>
-                <updateRate>0.0</updateRate>
-                <imageTopicName>color/image_raw</imageTopicName>
-                <depthImageTopicName>depth/image_rect_raw</depthImageTopicName>
-                <pointCloudTopicName>depth/points</pointCloudTopicName>
-                <cameraInfoTopicName>color/camera_info</cameraInfoTopicName>
-                <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
-                <frameName>camera_depth_optical_frame</frameName>
-                <baseline>0.1</baseline>
-                <distortion_k1>0.0</distortion_k1>
-                <distortion_k2>0.0</distortion_k2>
-                <distortion_k3>0.0</distortion_k3>
-                <distortion_t1>0.0</distortion_t1>
-                <distortion_t2>0.0</distortion_t2>
-                <pointCloudCutoff>0.4</pointCloudCutoff>
-            </plugin> 
-        </sensor>
-    </gazebo>    
 </robot>

@@ -1,5 +1,14 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="robotont">
-    <xacro:include filename="$(find robotont_description)/urdf/robotont_base.urdf.xacro"/>
-    <xacro:include filename="$(find robotont_gazebo)/urdf/robotont_gazebo_common.urdf.xacro" />
+    <xacro:arg name="generation" default="3"/>
+    <xacro:property name="generation" value="$(arg generation)"/>
+
+    <xacro:include filename="$(find robotont_gazebo)/urdf/robotont_gazebo_common.urdf.xacro"/>
+
+    <xacro:if value="${generation == 3}">
+        <xacro:include filename="$(find robotont_description)/urdf/gen3/robotont.urdf.xacro"/>
+    </xacro:if>
+    <xacro:if value="${generation == 2.1}">
+        <xacro:include filename="$(find robotont_description)/urdf/gen2_1/robotont.urdf.xacro"/>
+    </xacro:if>
 </robot>

@@ -8,9 +8,6 @@
         <xacro:unless value="${z_distance_reflect==-1}">
             <xacro:property name="name" value="back_${no_of_roller}" />
             <xacro:property name="offset" value="${pi}" />
-        </xacro:unless>     
-        <gazebo reference="${prefix}roller_${name}_rim_${parent}_link">
-            <material>Robotont/DarkGreen</material>
-        </gazebo>
+        </xacro:unless>
     </xacro:macro>
 </robot>

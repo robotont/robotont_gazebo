@@ -87,9 +87,5 @@
 			no_of_roller="6"
 			prefix="${prefix}"
 		/>
-        <gazebo reference="${prefix}rim_${name}_link">
-            <material>Gazebo/DarkGrey</material>
-            <!-- <kp>1000000</kp><kd>100</kd> -->
-        </gazebo>
     </xacro:macro>
 </robot>
