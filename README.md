@@ -1,6 +1,6 @@
 # robotont_gazebo
 
-![ROS 2](https://img.shields.io/badge/ROS2%20-Jazzy-blue.svg) [![CI](https://github.com/robotont/robotont_nuc_description/actions/workflows/industrial_ci_action.yml/badge.svg)](https://github.com/robotont/robotont_nuc_description/actions/workflows/industrial_ci_action.yml) ![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)
+![ROS 2](https://img.shields.io/badge/ROS2%20-Jazzy-blue.svg) [![CI](https://github.com/robotont/robotont_gazebo/actions/workflows/industrial_ci_action.yml/badge.svg)](https://github.com/robotont/robotont_gazebo/actions/workflows/industrial_ci_action.yml) ![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)
 
 ## **Overview**
 Gazebo simulation for Robotont.
