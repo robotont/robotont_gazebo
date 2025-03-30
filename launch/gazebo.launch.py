@@ -1,12 +1,14 @@
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, SetEnvironmentVariable, ExecuteProcess
 from launch.conditions import IfCondition
-from launch.substitutions import LaunchConfiguration, PythonExpression, EnvironmentVariable, PathJoinSubstitution, Command
+from launch.substitutions import LaunchConfiguration, PythonExpression, EnvironmentVariable, PathJoinSubstitution, \
+    Command
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
+
 
 def generate_launch_description():
     robotont_gazebo_pkg = get_package_share_directory('robotont_gazebo')
@@ -95,7 +97,7 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output='screen',
-        parameters=[{'robot_description': robot_description}]
+        parameters=[{'robot_description': robot_description, 'use_sim_time': True}],
     )
 
     spawn_urdf_node = Node(
@@ -128,10 +130,38 @@ def generate_launch_description():
         ],
         remappings=[
             ('/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/image', '/camera/color/image_raw'),
-            ('/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/depth_image', '/camera/depth/image_raw'),
+            (
+            '/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/depth_image', '/camera/depth/image_raw'),
             ('/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/points', '/camera/depth/points'),
-            ('/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/camera_info', '/camera/color/camera_info')
+            ('/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/camera_info',
+             '/camera/color/camera_info')
         ]
+    )
+
+    clock_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='clock_bridge',
+        output='screen',
+        arguments=['/world/default/clock@rosgraph_msgs/msg/Clock@gz.msgs.Clock'],
+        remappings=[('/world/default/clock', '/clock')]
+    )
+
+    joint_state_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='joint_state_bridge',
+        output='screen',
+        arguments=[
+            '/joint_states@sensor_msgs/msg/JointState@gz.msgs.Model'
+        ]
+    )
+
+    fake_driver_node = Node(
+        package='robotont_driver',
+        executable='fake_driver_node',
+        name='driver',
+        parameters=[{'use_sim_time': True}]
     )
 
     return LaunchDescription([
@@ -146,5 +176,8 @@ def generate_launch_description():
         gazebo_sim,
         robot_state_publisher_node,
         spawn_urdf_node,
-        camera_bridge
+        camera_bridge,
+        clock_bridge,
+        joint_state_bridge,
+        fake_driver_node
     ])
