@@ -39,7 +39,7 @@
           </distortion>
           <image>
             <width>640</width>
-            <height>480</height>
+            <height>120</height>
             <format>R8G8B8</format>
           </image>
           <clip>
@@ -48,8 +48,8 @@
           </clip>
           <depth_camera>
             <clip>
-              <near>0.1</near>
-              <far>10</far>
+              <near>0.7</near>
+              <far>100</far>
             </clip>
           </depth_camera>
           <noise>
