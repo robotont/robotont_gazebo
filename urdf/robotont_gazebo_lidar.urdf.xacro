@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="robotont">
+    <xacro:arg name="simulated" default="true"/>
+    <xacro:arg name="prefix" default=""/>
+    <xacro:arg name="generation" default="3"/>
+    <xacro:property name="generation" value="$(arg generation)"/>
+
+    <xacro:include filename="$(find robotont_gazebo)/urdf/robotont_gazebo_common.urdf.xacro"/>
+
+    <xacro:if value="${str(generation) == '3'}">
+        <xacro:include filename="$(find robotont_nuc_description)/urdf/gen3/robotont_lidar.urdf.xacro"/>
+    </xacro:if>
+    <xacro:if value="${str(generation) == '2.1'}">
+        <xacro:include filename="$(find robotont_description)/urdf/gen2_1/robotont.urdf.xacro"/>
+    </xacro:if>
+
+    <gazebo reference="lidar_link">
+        <sensor name='lidar' type='gpu_lidar'>
+            <topic>lidar</topic>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>640</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-1.396263</min_angle>
+                        <max_angle>1.396263</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>1</samples>
+                        <resolution>0.01</resolution>
+                        <min_angle>0</min_angle>
+                        <max_angle>0</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.08</min>
+                    <max>10.0</max>
+                    <resolution>0.01</resolution>
+                </range>
+            </ray>
+            <always_on>1</always_on>
+            <visualize>true</visualize>
+            <plugin name="gz::sim::v8::systems::Sensors" filename="gz-sim8-sensors-system">
+                <frame_name>lidar_link</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+</robot>

@@ -1,51 +1,24 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, SetEnvironmentVariable, ExecuteProcess
-from launch.conditions import IfCondition
-from launch.substitutions import LaunchConfiguration, PythonExpression, EnvironmentVariable, PathJoinSubstitution, \
-    Command
-from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable, ExecuteProcess
+from launch.substitutions import LaunchConfiguration, PythonExpression, EnvironmentVariable, PathJoinSubstitution, Command, FindExecutable
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
+from launch.conditions import IfCondition
 from ament_index_python.packages import get_package_share_directory
-
 
 def generate_launch_description():
     robotont_gazebo_pkg = get_package_share_directory('robotont_gazebo')
 
-    world_arg = DeclareLaunchArgument(
-        'world', default_value='worlds/empty.world',
-        description='Gazebo world file'
-    )
+    world_arg = DeclareLaunchArgument('world', default_value='worlds/empty.world')
+    world_path = PathJoinSubstitution([FindPackageShare('robotont_gazebo'), 'worlds', LaunchConfiguration('world')])
 
-    world_path = PathJoinSubstitution([
-        FindPackageShare('robotont_gazebo'), 'worlds', LaunchConfiguration('world')
-    ])
+    x_pos_arg = DeclareLaunchArgument('x', default_value='0')
+    y_pos_arg = DeclareLaunchArgument('y', default_value='0')
+    z_pos_arg = DeclareLaunchArgument('z', default_value='0')
 
-    x_pos_arg = DeclareLaunchArgument(
-        'x', default_value='0',
-        description='X position of the robot'
-    )
-
-    y_pos_arg = DeclareLaunchArgument(
-        'y', default_value='0',
-        description='Y position of the robot'
-    )
-
-    z_pos_arg = DeclareLaunchArgument(
-        'z', default_value='0',
-        description='Z position of the robot'
-    )
-
-    model_arg = DeclareLaunchArgument(
-        'model', default_value='robotont_gazebo_nuc',
-        description='Robot model to spawn'
-    )
-
-    generation_arg = DeclareLaunchArgument(
-        'generation', default_value='3',
-        description='Robot generation version'
-    )
+    model_arg = DeclareLaunchArgument('model', default_value='robotont_gazebo_nuc')
+    generation_arg = DeclareLaunchArgument('generation', default_value='3')
 
     urdf_file = PathJoinSubstitution([
         robotont_gazebo_pkg,
@@ -53,24 +26,21 @@ def generate_launch_description():
         PythonExpression(["'", LaunchConfiguration('model'), ".urdf.xacro'"])
     ])
 
-    robot_description = ParameterValue(
-        Command([
-            'xacro ', urdf_file,
-            ' generation:=', LaunchConfiguration('generation')
-        ]),
-        value_type=str
-    )
+    robot_description_content = Command([
+        PathJoinSubstitution([FindExecutable(name="xacro")]),
+        " ", urdf_file,
+        " generation:=", LaunchConfiguration('generation')
+    ])
+
+    robot_description = ParameterValue(robot_description_content, value_type=str)
 
     gazebo_model_path = SetEnvironmentVariable(
         name='GZ_SIM_MODEL_PATH',
         value=[
             EnvironmentVariable('GAZEBO_MODEL_PATH', default_value=''),
-            ':',
-            PathJoinSubstitution([FindPackageShare('robotont_description'), 'meshes']),
-            ':',
-            PathJoinSubstitution([FindPackageShare('robotont_nuc_description'), 'meshes']),
-            ':',
-            PathJoinSubstitution([FindPackageShare('robotont_gazebo')])
+            ':', PathJoinSubstitution([FindPackageShare('robotont_description'), 'meshes']),
+            ':', PathJoinSubstitution([FindPackageShare('robotont_nuc_description'), 'meshes']),
+            ':', PathJoinSubstitution([FindPackageShare('robotont_gazebo')])
         ]
     )
 
@@ -78,12 +48,9 @@ def generate_launch_description():
         name='GZ_SIM_RESOURCE_PATH',
         value=[
             EnvironmentVariable('GAZEBO_RESOURCE_PATH', default_value=''),
-            ':',
-            FindPackageShare('robotont_description'),
-            ':',
-            FindPackageShare('robotont_nuc_description'),
-            ':',
-            PathJoinSubstitution([FindPackageShare('robotont_gazebo')]),
+            ':', FindPackageShare('robotont_description'),
+            ':', FindPackageShare('robotont_nuc_description'),
+            ':', PathJoinSubstitution([FindPackageShare('robotont_gazebo')])
         ]
     )
 
@@ -97,7 +64,7 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output='screen',
-        parameters=[{'robot_description': robot_description, 'use_sim_time': True}],
+        parameters=[{'robot_description': robot_description, 'use_sim_time': True}]
     )
 
     spawn_urdf_node = Node(
@@ -107,10 +74,10 @@ def generate_launch_description():
         output='screen',
         arguments=[
             '-name', 'robotont',
-            '-topic', '/robot_description',
             '-x', LaunchConfiguration('x'),
             '-y', LaunchConfiguration('y'),
-            '-z', LaunchConfiguration('z')
+            '-z', LaunchConfiguration('z'),
+            '-string', robot_description_content
         ]
     )
 
@@ -119,9 +86,7 @@ def generate_launch_description():
         executable='parameter_bridge',
         name='camera_bridge',
         output='screen',
-        condition=IfCondition(PythonExpression([
-            '"', LaunchConfiguration('model'), '" == "robotont_gazebo_nuc"'
-        ])),
+        condition=IfCondition(PythonExpression(["\"", LaunchConfiguration('model'), "\" == \"robotont_gazebo_nuc\""])),
         arguments=[
             '/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/image@sensor_msgs/msg/Image@gz.msgs.Image',
             '/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/depth_image@sensor_msgs/msg/Image@gz.msgs.Image',
@@ -130,11 +95,23 @@ def generate_launch_description():
         ],
         remappings=[
             ('/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/image', '/camera/color/image_raw'),
-            (
-            '/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/depth_image', '/camera/depth/image_raw'),
+            ('/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/depth_image', '/camera/depth/image_raw'),
             ('/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/points', '/camera/depth/points'),
-            ('/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/camera_info',
-             '/camera/color/camera_info')
+            ('/world/default/model/robotont/link/base_footprint/sensor/rs_d435i/camera_info', '/camera/color/camera_info')
+        ]
+    )
+
+    lidar_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='lidar_bridge',
+        output='screen',
+        condition=IfCondition(PythonExpression(["\"", LaunchConfiguration('model'), "\" == \"robotont_gazebo_lidar\""])),
+        arguments=[
+            '/lidar@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan'
+        ],
+        remappings=[
+            ('/lidar', '/scan'),
         ]
     )
 
@@ -152,9 +129,7 @@ def generate_launch_description():
         executable='parameter_bridge',
         name='joint_state_bridge',
         output='screen',
-        arguments=[
-            '/joint_states@sensor_msgs/msg/JointState@gz.msgs.Model'
-        ]
+        arguments=['/joint_states@sensor_msgs/msg/JointState@gz.msgs.Model']
     )
 
     fake_driver_node = Node(
@@ -177,6 +152,7 @@ def generate_launch_description():
         robot_state_publisher_node,
         spawn_urdf_node,
         camera_bridge,
+        lidar_bridge,
         clock_bridge,
         joint_state_bridge,
         fake_driver_node
